@@ -6,5 +6,5 @@
 * _Kotlin_ for write all code
 
 #### How we will do that?
-_See this repo to understand how write using MVP_
-[MVP example](https://github.com/melnikovdv/android-arch-2/tree/hilt/)
+_See this repo to understand how write using MVVM_
+[MVVM example](https://github.com/android/sunflower)
