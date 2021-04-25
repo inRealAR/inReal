@@ -1,7 +1,7 @@
 # inReal
 ## This repo for refactor app using MVP architecture
 ### We will also use
-* _Dagger_ for implement Dependency Injection Pattern
+* _Hilt_ for implement Dependency Injection Pattern
 * _Room_ for add Database to our app
 * _Kotlin_ for write all code
 
