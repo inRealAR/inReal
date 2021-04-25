@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical"
+    android:background="@drawable/gradient_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/qr_text_view_1"
+            android:layout_width="@dimen/fragmentQR_textView1_width"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/greeting"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_for_textView_in_fragmentQR"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/fragmentQR_margin_top"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fragmentQR_margin_top">
+
+            <Button
+                android:id="@+id/qr_button_see_in_ar"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/fragmentQR_button_height"
+                android:text="@string/see_in_ar"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_for_button_in_fragmentQR"
+                android:textStyle="bold"
+                app:backgroundTint="@color/terracotta"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/fragmentQR_order_button_margin_start"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView"
+                android:layout_width="@dimen/fragmentQR_arrow1_width"
+                android:layout_height="@dimen/fragmentQR_arrow1_height"
+                android:rotation="-70"
+                android:src="@drawable/arrow_turn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/qr_button_see_in_ar"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="@dimen/fragmentQR_margin_top"
+                android:layout_marginStart="@dimen/fragmentQR_margin_start_arrow"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/qr_text_view_2"
+            android:layout_width="@dimen/fragmentQR_textView2_width"
+            android:layout_height="wrap_content"
+            android:text="@string/AR_button_description_1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_for_textView_in_fragmentQR"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/fragmentQR_margin_top"
+            android:layout_marginEnd="@dimen/fragmentQR_see_in_AR_description1_margin_end"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/fragmentQR_arrow1_width"
+            android:layout_height="@dimen/fragmentQR_arrow1_height"
+            android:src="@drawable/arrow_turn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/fragmentQR_margin_top"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/qr_text_view_3"
+            android:layout_width="@dimen/fragmentQR_textView3_width"
+            android:layout_height="wrap_content"
+            android:text="@string/AR_button_description_2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_for_textView_in_fragmentQR"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/fragmentQR_margin_top"
+            android:layout_marginStart="20dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fragmentQR_margin_top">
+
+            <TextView
+                android:id="@+id/qr_text_view_4"
+                android:layout_width="@dimen/fragmentQR_textView4_width"
+                android:layout_height="wrap_content"
+                android:text="@string/Select_button_description"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_for_textView_in_fragmentQR"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/fragmentQR_see_in_AR_description2_margin_start"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/fragmentQR_arrow2_width"
+                android:layout_height="@dimen/fragmentQR_arrow2_height"
+                android:src="@drawable/arrow"
+                android:rotation="180"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/fragmentQR_arrow1_margin_start" />
+
+            <Button
+                android:id="@+id/qr_button_for_choice"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/fragmentQR_button_height"
+                android:text="@string/button_text_for_choice"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_for_button_in_fragmentQR"
+                android:textStyle="bold"
+                app:backgroundTint="@color/terracotta"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginEnd="@dimen/fragmentQR_select_button_margin_end" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fragmentQR_margin_top">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/order"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/fragmentQR_order_icon_margin_start" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/fragmentQR_arrow2_width"
+                android:layout_height="@dimen/fragmentQR_arrow2_height"
+                android:src="@drawable/arrow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/fragmentQR_arrow2_margin_start" />
+
+            <TextView
+                android:id="@+id/qr_text_view_5"
+                android:layout_width="@dimen/fragmentQR_textView5_width"
+                android:layout_height="wrap_content"
+                android:text="@string/Order_button_description"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_for_textView_in_fragmentQR"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginEnd="@dimen/fragmentQR_order_description_margin_end" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/qr_text_view_6"
+            android:layout_width="@dimen/fragmentQR_textView1_width"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/QR_button_description"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_for_textView_in_fragmentQR"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/fragmentQR_margin_top"/>
+
+        <ImageView
+            android:id="@+id/qr_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/qr"
+            android:layout_marginTop="@dimen/fragmentQR_margin_top"
+            android:layout_gravity="center_horizontal"/>
+
+        <Button
+            android:id="@+id/qr_button_for_scan"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fragmentQR_button_height"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/fragmentQR_margin_top"
+            android:layout_marginBottom="@dimen/fragmentQR_margin_bottom"
+            android:text="@string/scan_qr_code"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_for_button_in_fragmentQR"
+            android:textStyle="bold"
+            app:backgroundTint="@color/terracotta" />
+
+    </LinearLayout>
+
+</ScrollView>

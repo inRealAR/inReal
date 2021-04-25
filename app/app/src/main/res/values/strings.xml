@@ -1,14 +1,33 @@
 <resources>
-    <string name="app_name">inReal</string>
-    <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="create_order">Create Order</string>
+    <string name="create_order_title">Create Order</string>
+    <string name="get_back">Fuck, go back</string>
+    <string name="action_share">Share</string>
+    <string name="title_top">Top fragment</string>
+    <string name="app_name">InReal</string>
+    <string name="in_real_logo">InReal logo</string>
+    <string name="ar_button">see in AR</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="greeting">Приложение inReal позволит вам прикоснуться к новейшим технологиям
+        в области дополненной реальности!</string>
+    <string name="AR_button_description_1">Всего одно нажатие на эту кнопку и вы увидите выбранное
+        блюдо на столе!</string>
+    <string name="AR_button_description_2">Мы покажем вам точную копию блюда - его 3D модель,
+        чтобы вы оценили его размеры и рассмотрели ингредиенты!</string>
+    <string name="Select_button_description">Если вам понравилось блюдо, то нажмите на эту кнопку!
+        Мы добавим его к вам в заказ!</string>
+    <string name="Order_button_description">Хотите посмотреть свой заказ - смело нажимайте на эту
+        кнопку!</string>
+    <string name="QR_button_description">Уже не терпится окунуться в мир дополненной реальности?
+        Вам осталось лишь считать qr-код, предоставленный рестораном - остальное сделаем мы!</string>
+    <string name="button_text_for_choice">Добавить в заказ</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="see_in_ar">Посмотреть в AR</string>
+    <string name="text_for_kbzhu">КБЖУ на 100г:</string>
+    <string name="consist">Состав:</string>
+    <string name="scan_qr_code">Сканировать QR код</string>
+    <string name="button_text_for_see">Перейти</string>
+    <string name="orderFragmentNavigationMenu">Order</string>
+
 </resources>
