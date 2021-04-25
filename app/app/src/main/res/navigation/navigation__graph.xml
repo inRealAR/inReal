@@ -3,17 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation__graph"
-    app:startDestination="@id/instructionsFragment">
+    app:startDestination="@id/fragmentInstructions">
 
-    <fragment
-        android:id="@+id/instructionsFragment"
-        android:name="com.proct.activities.inreal.views.main.instructions.InstructionsFragment"
-        android:label="fragment_instructions"
-        tools:layout="@layout/fragment_main__instructions" >
-        <action
-            android:id="@+id/action_instructionsFragment_to_fragmentCategories"
-            app:destination="@id/fragmentCategories" />
-    </fragment>
     <fragment
         android:id="@+id/fragmentCategories"
         android:name="com.proct.activities.inreal.views.main.category.FragmentCategories"
@@ -50,11 +41,25 @@
         android:label="fragment_main__main_order"
         tools:layout="@layout/fragment_main__main_order" >
         <action
+            android:id="@+id/action_mainOrderFragment_to_fillOrderFragment"
+            app:destination="@id/fillOrderFragment" />
+        <action
             android:id="@+id/action_mainOrderFragment_to_emptyOrderFragment"
             app:destination="@id/emptyOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ARFragment"
+        android:name="com.proct.activities.inreal.views.main.ar.ARFragment"
+        android:label="fragment_main__a_r"
+        tools:layout="@layout/fragment_main__a_r" />
+    <fragment
+        android:id="@+id/fragmentInstructions"
+        android:name="com.proct.activities.inreal.views.main.instructions.InstructionsFragment"
+        android:label="fragmentInstructions"
+        tools:layout="@layout/fragment_main__instructions" >
         <action
-            android:id="@+id/action_mainOrderFragment_to_fillOrderFragment2"
-            app:destination="@id/fillOrderFragment2" />
+            android:id="@+id/action_fragmentInstructions_to_fragmentCategories"
+            app:destination="@id/fragmentCategories" />
     </fragment>
     <fragment
         android:id="@+id/emptyOrderFragment"
@@ -62,12 +67,7 @@
         android:label="fragment_main__order__empty_order"
         tools:layout="@layout/fragment_main__order__empty_order" />
     <fragment
-        android:id="@+id/ARFragment"
-        android:name="com.proct.activities.inreal.views.main.ar.ARFragment"
-        android:label="fragment_main__a_r"
-        tools:layout="@layout/fragment_main__a_r" />
-    <fragment
-        android:id="@+id/fillOrderFragment2"
+        android:id="@+id/fillOrderFragment"
         android:name="com.proct.activities.inreal.views.main.order.fill.FillOrderFragment"
         android:label="fragment_main__order__fill_order"
         tools:layout="@layout/fragment_main__order__fill_order" />
