@@ -5,5 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".views.main.order.MainOrderFragment">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Order"
+        android:textSize="110sp"/>
 
 </FrameLayout>

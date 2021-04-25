@@ -28,6 +28,7 @@
     <string name="consist">Состав:</string>
     <string name="scan_qr_code">Сканировать QR код</string>
     <string name="button_text_for_see">Перейти</string>
-    <string name="orderFragmentNavigationMenu">Order</string>
+    <string name="orderFragmentNavigationMenu">mainOrderFragment</string>
+    <string name="about">About</string>
 
 </resources>
