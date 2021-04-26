@@ -10,7 +10,6 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
 class CategoryAndDishesViewModelProvider @Inject constructor(
     var dishesViewModelAdapter: DishesViewModelAdapter
 ) {
