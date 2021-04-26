@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/order_card_root_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/order_card_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/orderCard_layout_height"
+        android:background="@drawable/order_shape">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/order_card_picture"
+            android:layout_width="@dimen/height_and_width_for_pic_in_orderCard"
+            android:layout_height="@dimen/height_and_width_for_pic_in_orderCard"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="@dimen/image_margin_start_in_orderCard"/>
+
+        <TextView
+            android:id="@+id/order_card_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_for_name_in_orderCard"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="@dimen/card_name_margin_start_in_orderCard"
+            android:layout_marginTop="@dimen/card_name_margin_top_in_orderCard"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/order_card_delete"
+            android:layout_width="@dimen/height_and_width_for_delete_in_orderCard"
+            android:layout_height="@dimen/height_and_width_for_delete_in_orderCard"
+            android:src="@drawable/cross"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/cross_margin_top_in_orderCard"
+            android:layout_marginEnd="@dimen/cross_margin_end_in_orderCard"/>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/order_card_minus"
+            android:layout_width="@dimen/height_and_width_for_minus_and_plus_in_orderCard"
+            android:layout_height="@dimen/height_and_width_for_minus_and_plus_in_orderCard"
+            android:src="@drawable/minus"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="@dimen/minus_margin_end_in_orderCard"
+            android:layout_marginBottom="@dimen/count_margin_bottom_in_orderCard"/>
+
+        <TextView
+            android:id="@+id/order_card_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_for_count_in_orderCard"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/order_card_plus"
+            app:layout_constraintStart_toStartOf="@id/order_card_minus"
+            android:text="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/count_margin_bottom_in_orderCard" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/order_card_plus"
+            android:layout_width="@dimen/height_and_width_for_minus_and_plus_in_orderCard"
+            android:layout_height="@dimen/height_and_width_for_minus_and_plus_in_orderCard"
+            android:src="@drawable/plus"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="@dimen/plus_margin_end_in_orderCard"
+            android:layout_marginBottom="@dimen/count_margin_bottom_in_orderCard" />
+
+        <TextView
+            android:id="@+id/order_card_total_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/beige"
+            android:textSize="@dimen/text_size_for_totalCost_in_orderCard"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/cost_margin_end_in_orderCard"
+            android:layout_marginBottom="@dimen/cost_margin_bottom_in_orderCard"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/height_and_width_for_picOfRuble"
+            android:layout_height="@dimen/height_and_width_for_picOfRuble"
+            android:src="@drawable/ruble"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="@dimen/ruble_icon_margin_in_orderCard"
+            android:layout_marginEnd="@dimen/ruble_icon_margin_in_orderCard"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

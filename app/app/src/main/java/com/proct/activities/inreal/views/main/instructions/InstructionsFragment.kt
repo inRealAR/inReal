@@ -9,7 +9,10 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.proct.activities.inreal.R
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class InstructionsFragment : Fragment() {
 
     private lateinit var buttonStart: AppCompatButton

@@ -1,9 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".views.main.dishes.FragmentDetailedDish">
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/detailed_card_for_dish_card_view_with_kbgu"
+                android:layout_width="@dimen/detailedCardForDish_CardViewWithKBGU_width"
+                android:layout_height="@dimen/detailedCardForDish_CardViewWithKBGU_height"
+                android:alpha="0.8"
+                app:cardCornerRadius="@dimen/detailedCardForDish_CardViewWithKBGU_cardCornerRadius"
+                android:layout_marginStart="@dimen/kbzhu_card_margin_start_in_detailedCardForDish"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/detailed_card_for_dish_picture">
 
 
-</FrameLayout>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/detailedCardForDish_CardViewWithKBGU_width"
+                    android:layout_height="@dimen/detailedCardForDish_CardViewWithKBGU_height"
+                    android:src="@drawable/rectangle" />
+
+                <LinearLayout
+                    android:layout_width="@dimen/detailedCardForDish_CardViewWithKBGU_width"
+                    android:layout_height="@dimen/detailedCardForDish_CardViewWithKBGU_height"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/detailed_card_for_dish_name_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:paddingStart="@dimen/paddings_left_and_right_for_KBGUTexts_in_detailedCardForDish"
+                        android:paddingLeft="@dimen/paddings_left_and_right_for_KBGUTexts_in_detailedCardForDish"
+                        android:paddingTop="@dimen/padding_top_for_nameTextView_in_detailedCardForDish"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_for_nameTextView_in_detailedCardForDish"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/paddings_left_and_right_for_KBGUTexts_in_detailedCardForDish"
+                        android:paddingLeft="@dimen/paddings_left_and_right_for_KBGUTexts_in_detailedCardForDish"
+                        android:paddingTop="@dimen/padding_top_for_nameTextView_in_detailedCardForDish"
+                        android:text="@string/text_for_kbzhu"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_for_KBGUTexts_in_detailedCardForDish"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/detailed_card_for_dish_kbgu_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/paddings_left_and_right_for_KBGUTexts_in_detailedCardForDish"
+                        android:paddingLeft="@dimen/paddings_left_and_right_for_KBGUTexts_in_detailedCardForDish"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_for_KBGUTexts_in_detailedCardForDish"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/detailed_card_for_dish_picture"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/detailedCardForDish_picture_height"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient_background"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/paddings_for_textsAfterPic_in_detailedCardForDish"
+                android:paddingLeft="@dimen/paddings_for_textsAfterPic_in_detailedCardForDish"
+                android:paddingTop="@dimen/paddings_for_textsAfterPic_in_detailedCardForDish"
+                android:text="@string/consist"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_for_ingredientsTexts_in_detailedCardForDish"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/detailed_card_for_dish_ingridients_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingStart="@dimen/paddings_for_textsAfterPic_in_detailedCardForDish"
+                android:paddingLeft="@dimen/paddings_for_textsAfterPic_in_detailedCardForDish"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_for_ingredientsTexts_in_detailedCardForDish"
+                android:textStyle="bold" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/paddings_for_textsAfterPic_in_detailedCardForDish">
+
+                <TextView
+                    android:id="@+id/detailed_card_for_dish_price_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textColor="@color/beige"
+                    android:textSize="@dimen/text_size_for_priceTextView_in_detailedCardForDish"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginEnd="@dimen/cost_margin_end_in_detailedCardForDish"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/height_and_width_for_picOfRuble"
+                    android:layout_height="@dimen/height_and_width_for_picOfRuble"
+                    android:src="@drawable/ruble"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginEnd="@dimen/ruble_icon_margin_end_in_detailedCardForDish"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/paddings_for_textsAfterPic_in_detailedCardForDish">
+
+                <Button
+                    android:id="@+id/detailed_card_for_dish_button_see_in_ar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/detailedCardForDish_buttons_height"
+                    android:text="@string/see_in_ar"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_for_buttonsTextView_in_detailedCardForDish"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/terracotta"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="@dimen/buttons_margin_in_detailedCardForDish" />
+
+                <Button
+                    android:id="@+id/detailed_card_for_dish_button_for_choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/detailedCardForDish_buttons_height"
+                    android:text="@string/button_text_for_choice"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_for_buttonsTextView_in_detailedCardForDish"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/terracotta"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginEnd="@dimen/buttons_margin_in_detailedCardForDish" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
