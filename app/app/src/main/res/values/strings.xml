@@ -30,5 +30,7 @@
     <string name="button_text_for_see">Перейти</string>
     <string name="orderFragmentNavigationMenu">mainOrderFragment</string>
     <string name="about">About</string>
+    <string name="go_to_categories_from_order">Перейти к категориям блюд</string>
+    <string name="string_for_empty_order">Заказ пуст!</string>
 
 </resources>

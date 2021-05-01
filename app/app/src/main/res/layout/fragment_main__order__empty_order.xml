@@ -1,9 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.main.order.empty.EmptyOrderFragment">
+    tools:context=".views.main.order.empty.EmptyOrderFragment"
+    android:background="@drawable/gradient_background">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/empty_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margins_for_emptyTextView_in_fragmentEmptyOrder"
+            android:text="@string/string_for_empty_order"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_for_emptyTextView_in_fragmentEmptyOrder"/>
+
+        <Button
+            android:id="@+id/fragment_empty_order_button_categories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/go_to_categories_from_order"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_for_button_in_fragmentEmptyOrder"
+            app:backgroundTint="@color/terracotta"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

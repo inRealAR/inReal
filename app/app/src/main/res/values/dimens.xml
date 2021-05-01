@@ -42,6 +42,8 @@
     <dimen name = "margin_top_for_descriptionTextView_in_cardForDish">60dp</dimen>
     <dimen name = "margin_top_for_priceTextView_in_cardForDish">49dp</dimen>
     <dimen name = "margin_top_for_buttonForChoice_in_cardForDish">40dp</dimen>
+    <dimen name = "margins_for_emptyTextView_in_fragmentEmptyOrder">10dp</dimen>
+    <dimen name = "margins_for_priceTextView_in_fragmentFillOrder">5dp</dimen>
     <dimen name = "text_size_for_nameTextView_in_cardForDish">20sp</dimen>
     <dimen name = "text_size_for_descriptionTextView_in_cardForDish">12sp</dimen>
     <dimen name = "text_size_for_priceTextView_in_cardForDish">18sp</dimen>
@@ -51,12 +53,15 @@
     <dimen name = "text_size_for_KBGUTexts_in_detailedCardForDish">15sp</dimen>
     <dimen name = "text_size_for_ingredientsTexts_in_detailedCardForDish">18sp</dimen>
     <dimen name = "text_size_for_priceTextView_in_detailedCardForDish">20sp</dimen>
+    <dimen name = "text_size_for_priceTextView_in_fragmentFillOrder">18sp</dimen>
     <dimen name = "text_size_for_buttonsTextView_in_detailedCardForDish">12sp</dimen>
     <dimen name = "text_size_for_name_in_orderCard">20sp</dimen>
     <dimen name = "text_size_for_count_in_orderCard">25sp</dimen>
     <dimen name = "text_size_for_totalCost_in_orderCard">20sp</dimen>
     <dimen name = "text_size_for_textView_in_fragmentQR">15sp</dimen>
     <dimen name = "text_size_for_button_in_fragmentQR">12sp</dimen>
+    <dimen name = "text_size_for_emptyTextView_in_fragmentEmptyOrder">20sp</dimen>
+    <dimen name = "text_size_for_button_in_fragmentEmptyOrder">15sp</dimen>
     <dimen name = "padding_top_for_nameTextView_in_detailedCardForDish">5dp</dimen>
     <dimen name = "paddings_left_and_right_for_KBGUTexts_in_detailedCardForDish">14dp</dimen>
     <dimen name = "paddings_for_textsAfterPic_in_detailedCardForDish">20dp</dimen>
