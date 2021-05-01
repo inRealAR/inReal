@@ -1,0 +1,76 @@
+{
+  materials: [
+    {
+      name: 'Material.001',
+      parameters: [
+        {
+          baseColor: null,
+        },
+        {
+          baseColorTint: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          metallic: 1,
+        },
+        {
+          roughness: 0.047087999999999998,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'potato_with_chicken',
+      parameters: [
+        {
+          baseColor: 'potato_with_chicken',
+        },
+        {
+          baseColorTint: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          metallic: 0,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+    ],
+    collision: {},
+    file: 'sampledata/hot_meals/meat_whith_potato/meat_whith_potato.obj',
+    name: 'meat_whith_potato',
+    recenter: 'root',
+    scale: 1.15,
+  },
+  samplers: [
+    {
+      file: 'sampledata/hot_meals/meat_whith_potato\\potato_with_chicken.png',
+      name: 'potato_with_chicken',
+      pipeline_name: 'potato_with_chicken.png',
+    },
+  ],
+  version: '0.54:2',
+}

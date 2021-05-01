@@ -3,7 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
-    id'kotlin-android-extensions'
+    id 'kotlin-android-extensions'
 
 }
 
@@ -81,4 +81,90 @@ dependencies {
     implementation 'android.arch.navigation:navigation-ui:1.0.0-alpha02'
 
     implementation 'androidx.multidex:multidex:2.0.1'
+
+    //Room
+    def room_version = "2.2.6"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 }
+apply plugin: 'com.google.ar.sceneform.plugin'
+
+//sceneform.asset('sampledata/soups/tom_yam/tom_yam.obj', // 'Source Asset Path' specified during import.
+//        'default',                    // 'Material Path' specified during import.
+//        'sampledata/models/tom_yam.sfa', // '.sfa Output Path' specified during import.
+//        'src/main/res/raw/tom_yam')
+//
+//sceneform.asset('sampledata/soups/krem_soup/krem_soup.obj', // 'Source Asset Path' specified during import.
+//        'default',                    // 'Material Path' specified during import.
+//        'sampledata/models/krem_soup.sfa', // '.sfa Output Path' specified during import.
+//        'src/main/res/raw/krem_soup')
+//
+//sceneform.asset('sampledata/salads/standart_salad/standart_salad.obj', // 'Source Asset Path' specified during import.
+//        'default',// 'Material Path' specified during import.
+//        'sampledata/models/standart_salad.sfa', // '.sfa Output Path' specified during import.
+//        'src/main/res/raw/standart_salad')
+//
+//sceneform.asset('sampledata/salads/potato_salad/potato_salad.obj', // 'Source Asset Path' specified during import.
+//        'default',// 'Material Path' specified during import.
+//        'sampledata/models/potato_salad.sfa', // '.sfa Output Path' specified during import.
+//        'src/main/res/raw/potato_salad')
+//
+//sceneform.asset('sampledata/drinks/capuccino/capuccino.obj', // 'Source Asset Path' specified during import.
+//        'default',// 'Material Path' specified during import.
+//        'sampledata/models/capuccino.sfa', // '.sfa Output Path' specified during import.
+//        'src/main/res/raw/capuccino')
+//
+//sceneform.asset('sampledata/drinks/coffee/coffee.obj', // 'Source Asset Path' specified during import.
+//        'default',// 'Material Path' specified during import.
+//        'sampledata/models/coffee.sfa', // '.sfa Output Path' specified during import.
+//        'src/main/res/raw/coffee')
+//
+//sceneform.asset('sampledata/drinks/tea/tea.obj', // 'Source Asset Path' specified during import.
+//        'default',// 'Material Path' specified during import.
+//        'sampledata/models/tea.sfa', // '.sfa Output Path' specified during import.
+//        'src/main/res/raw/tea')
+//
+//sceneform.asset('sampledata/desserts/bisquit_cake/Desserts.obj', // 'Source Asset Path' specified during import.
+//        'default',// 'Material Path' specified during import.
+//        'sampledata/models/Desserts.sfa', // '.sfa Output Path' specified during import.
+//        'src/main/res/raw/bisquit_cake')
+//
+//sceneform.asset('sampledata/desserts/piece_of_the_cake/piece_of_the_cake.obj', // 'Source Asset Path' specified during import.
+//        'default',// 'Material Path' specified during import.
+//        'sampledata/models/piece_of_the_cake.sfa', // '.sfa Output Path' specified during import.
+//        'src/main/res/raw/piece_of_the_cake')
+//
+//sceneform.asset('sampledata/desserts/pudding/pudding.obj', // 'Source Asset Path' specified during import.
+//        'default',// 'Material Path' specified during import.
+//        'sampledata/models/pudding.sfa', // '.sfa Output Path' specified during import.
+//        'src/main/res/raw/pudding')
+//
+//sceneform.asset('sampledata/desserts/pancakes/pancakes.obj', // 'Source Asset Path' specified during import.
+//        'default',// 'Material Path' specified during import.
+//        'sampledata/models/pancakes.sfa', // '.sfa Output Path' specified during import.
+//        'src/main/res/raw/pancakes')
+//
+//sceneform.asset('sampledata/hot_meals/cheeseburger/cheeseburger.obj', // 'Source Asset Path' specified during import.
+//        'default',// 'Material Path' specified during import.
+//        'sampledata/models/cheeseburger.sfa', // '.sfa Output Path' specified during import.
+//        'src/main/res/raw/cheeseburger')
+//
+//sceneform.asset('sampledata/hot_meals/chicken_mit_potato/chicken_mit_potato.obj', // 'Source Asset Path' specified during import.
+//        'default',// 'Material Path' specified during import.
+//        'sampledata/models/chicken_mit_potato.sfa', // '.sfa Output Path' specified during import.
+//        'src/main/res/raw/chicken_mit_potato')
+//
+//sceneform.asset('sampledata/hot_meals/chicken_wings/chicken_wings.obj', // 'Source Asset Path' specified during import.
+//        'default',// 'Material Path' specified during import.
+//        'sampledata/models/chicken_wings.sfa', // '.sfa Output Path' specified during import.
+//        'src/main/res/raw/chicken_wings')
+//
+//sceneform.asset('sampledata/hot_meals/pizza/pizza.obj', // 'Source Asset Path' specified during import.
+//        'default',// 'Material Path' specified during import.
+//        'sampledata/models/pizza.sfa', // '.sfa Output Path' specified during import.
+//        'src/main/res/raw/pizza')
+//
+//sceneform.asset('sampledata/hot_meals/meat_whith_potato/meat_whith_potato.obj', // 'Source Asset Path' specified during import.
+//        'default',// 'Material Path' specified during import.
+//        'sampledata/models/meat_whith_potato.sfa', // '.sfa Output Path' specified during import.
+//        'src/main/res/raw/meat_whith_potato')
