@@ -31,7 +31,7 @@ class FragmentCategories : Fragment() {
     private lateinit var listener: CategoriesListener
     private lateinit var viewModel: CategoryViewModel
     private var adapter: CategoryCardAdapter? = null
-    private var listOfCategories: List<Category> = emptyList()
+    private var listOfCategories: MutableList<Category>? = null
     private lateinit var mainNavController: NavController
 
     override fun onCreateView(
@@ -53,7 +53,7 @@ class FragmentCategories : Fragment() {
 
         }
 
-        adapter = CategoryCardAdapter(listOfCategories)
+        adapter = CategoryCardAdapter(mutableListOf())
         recyclerView.adapter = adapter
         val layoutManager = LinearLayoutManager(activity)
         recyclerView.layoutManager = layoutManager
@@ -64,6 +64,7 @@ class FragmentCategories : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         initObservers()
+
     }
 
     private fun initObservers() {
@@ -74,7 +75,7 @@ class FragmentCategories : Fragment() {
 
     private fun update(list: List<Category>) {
         if (adapter == null) {
-            adapter = CategoryCardAdapter(listOfCategories)
+            adapter = CategoryCardAdapter(listOfCategories!!)
         }
         val diff = DiffUtil.calculateDiff(DiffUtilsCategory(adapter!!.categories, list))
         adapter!!.categories = list

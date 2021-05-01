@@ -1,0 +1,169 @@
+{
+  materials: [
+    {
+      name: 'uplemon',
+      parameters: [
+        {
+          baseColor: 'lemon_slice_126780',
+        },
+        {
+          baseColorTint: [
+            0.80000000000000004,
+            0.80000000000000004,
+            0.80000000000000004,
+            1,
+          ],
+        },
+        {
+          metallic: 0,
+        },
+        {
+          roughness: 0.8,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'wire_088199225',
+      parameters: [
+        {
+          baseColor: '50364138_yellow_lemon_peel_texture_macro',
+        },
+        {
+          baseColorTint: [
+            0.34510000000000002,
+            0.78039999999999998,
+            0.88239999999999996,
+            1,
+          ],
+        },
+        {
+          metallic: 0,
+        },
+        {
+          roughness: 0.8,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'wire_154185229',
+      parameters: [
+        {
+          baseColor: 'coriander',
+        },
+        {
+          baseColorTint: [
+            0.60389999999999999,
+            0.72550000000000003,
+            0.89800000000000002,
+            1,
+          ],
+        },
+        {
+          metallic: 0,
+        },
+        {
+          roughness: 0.8,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'wire_228184153',
+      parameters: [
+        {
+          baseColor: '01a',
+        },
+        {
+          baseColorTint: [
+            0.89410000000000001,
+            0.72160000000000002,
+            0.59999999999999998,
+            1,
+          ],
+        },
+        {
+          metallic: 0,
+        },
+        {
+          roughness: 0.8,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'wire_229166215',
+      parameters: [
+        {
+          baseColor: null,
+        },
+        {
+          baseColorTint: [
+            0.467748,
+            0.61800999999999995,
+            0.81286700000000001,
+            1,
+          ],
+        },
+        {
+          metallic: 0,
+        },
+        {
+          roughness: 0.8,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+    ],
+    collision: {},
+    file: 'sampledata/hot_meals/chicken_wings/chicken_wings.obj',
+    name: 'chicken_wings',
+    recenter: 'root',
+    scale: 0.3,
+  },
+  samplers: [
+    {
+      file: 'sampledata/hot_meals/chicken_wings\\lemon_slice_126780.jpg',
+      name: 'lemon_slice_126780',
+      pipeline_name: 'lemon_slice_126780.jpg',
+    },
+    {
+      file: 'sampledata/hot_meals/chicken_wings\\50364138_yellow_lemon_peel_texture_macro.jpg',
+      name: '50364138_yellow_lemon_peel_texture_macro',
+      pipeline_name: '50364138_yellow_lemon_peel_texture_macro.jpg',
+    },
+    {
+      file: 'sampledata/hot_meals/chicken_wings\\coriander.jpg',
+      name: 'coriander',
+      pipeline_name: 'coriander.jpg',
+    },
+    {
+      file: 'sampledata/hot_meals/chicken_wings\\01a.jpg',
+      name: '01a',
+      pipeline_name: '01a.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

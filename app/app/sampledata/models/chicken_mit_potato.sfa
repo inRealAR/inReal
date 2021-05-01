@@ -1,0 +1,123 @@
+{
+  materials: [
+    {
+      name: 'Material.001',
+      parameters: [
+        {
+          baseColor: null,
+        },
+        {
+          baseColorTint: [
+            0.80000000000000004,
+            0.80000000000000004,
+            0.80000000000000004,
+            1,
+          ],
+        },
+        {
+          metallic: 0.5,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'batatas',
+      parameters: [
+        {
+          baseColor: 'potato',
+        },
+        {
+          baseColorTint: [
+            0.80000000000000004,
+            0.80000000000000004,
+            0.80000000000000004,
+            1,
+          ],
+        },
+        {
+          metallic: 0.5,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'frango',
+      parameters: [
+        {
+          baseColor: 'frango_low_material_basecolor',
+        },
+        {
+          baseColorTint: [
+            0.80000000000000004,
+            0.80000000000000004,
+            0.80000000000000004,
+            1,
+          ],
+        },
+        {
+          metallic: 0.5,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+    ],
+    collision: {},
+    file: 'sampledata/hot_meals/chicken_mit_potato/chicken_mit_potato.obj',
+    name: 'chicken_mit_potato',
+    recenter: 'root',
+    scale: 0.08,
+  },
+  samplers: [
+    {
+      file: 'sampledata/hot_meals/chicken_mit_potato\\frango_low_material_roughness.png',
+      name: 'frango_low_material_roughness',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'frango_low_material_roughness.png',
+    },
+    {
+      file: 'sampledata/hot_meals/chicken_mit_potato\\potato.jpeg',
+      name: 'potato',
+      pipeline_name: 'potato.jpg',
+    },
+    {
+      file: 'sampledata/hot_meals/chicken_mit_potato\\frango_low_material_basecolor.png',
+      name: 'frango_low_material_basecolor',
+      pipeline_name: 'frango_low_material_basecolor.png',
+    },
+    {
+      file: 'sampledata/hot_meals/chicken_mit_potato\\frango_low_material_normal.png',
+      name: 'frango_low_material_normal',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'frango_low_material_normal.png',
+    },
+  ],
+  version: '0.54:2',
+}

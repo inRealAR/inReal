@@ -1,0 +1,117 @@
+{
+  materials: [
+    {
+      name: 'Glass',
+      parameters: [
+        {
+          baseColor: null,
+        },
+        {
+          baseColorTint: [
+            0.39176800000000001,
+            0.48458899999999999,
+            0.50852699999999995,
+            1,
+          ],
+        },
+        {
+          metallic: 0,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          opacity: 0.14999999999999999,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'MetalShine_0.1',
+      parameters: [
+        {
+          baseColor: null,
+        },
+        {
+          baseColorTint: [
+            0.80000000000000004,
+            0.80000000000000004,
+            0.80000000000000004,
+            1,
+          ],
+        },
+        {
+          metallic: 0,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'Salad_Vegetables',
+      parameters: [
+        {
+          baseColor: 'salad_vegetables_base',
+        },
+        {
+          baseColorTint: [
+            0.80000000000000004,
+            0.80000000000000004,
+            0.80000000000000004,
+            1,
+          ],
+        },
+        {
+          metallic: 0,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+    ],
+    collision: {},
+    file: 'sampledata/salads/potato_salad/potato_salad.obj',
+    name: 'salad',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/salads/potato_salad\\salad_vegetables_base.png',
+      name: 'salad_vegetables_base',
+      pipeline_name: 'salad_vegetables_base.png',
+    },
+    {
+      file: 'sampledata/salads/potato_salad\\salad_vegetables_roughness.png',
+      name: 'salad_vegetables_roughness',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'salad_vegetables_roughness.png',
+    },
+    {
+      file: 'sampledata/salads/potato_salad\\salad_vegetables_normal.png',
+      name: 'salad_vegetables_normal',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'salad_vegetables_normal.png',
+    },
+  ],
+  version: '0.54:2',
+}

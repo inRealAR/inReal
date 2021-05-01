@@ -1,0 +1,36 @@
+# Blender MTL File: 'chikenmitPotato.blend'
+# Material Count: 3
+
+newmtl Material.001
+Ns 702.249987
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl batatas
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd potato.jpg
+
+newmtl frango
+Ns 364.462832
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.254545 0.254545 0.254545
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump -bm 0.500000 frango_low_material_normal.png
+map_Kd frango_low_material_basecolor.png
+map_Ns frango_low_material_roughness.png

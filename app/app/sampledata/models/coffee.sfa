@@ -1,0 +1,49 @@
+{
+  materials: [
+    {
+      name: 'cup',
+      parameters: [
+        {
+          baseColor: 't_Coffee01a_bc',
+        },
+        {
+          baseColorTint: [
+            0.80000000000000004,
+            0.80000000000000004,
+            0.80000000000000004,
+            1,
+          ],
+        },
+        {
+          metallic: 1,
+        },
+        {
+          roughness: 0.066518999999999995,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+    ],
+    collision: {},
+    file: 'sampledata/drinks/coffee/coffee.obj',
+    name: 'coffee',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/drinks/coffee\\t_Coffee01a_bc.png',
+      name: 't_Coffee01a_bc',
+      pipeline_name: 't_Coffee01a_bc.png',
+    },
+  ],
+  version: '0.54:2',
+}
