@@ -9,9 +9,13 @@ import com.proct.activities.inreal.data.model.Category
 import com.proct.activities.inreal.data.model.Dish
 import com.proct.activities.inreal.data.sources.InRealDataLocalSource
 import com.proct.activities.inreal.utils.adapters.CategoryViewModelAdapter
+import com.proct.activities.inreal.utils.adapters.DetailedDishViewModelAdapter
 import com.proct.activities.inreal.utils.adapters.DishesViewModelAdapter
 import com.proct.activities.inreal.utils.providers.CategoryAndDishesViewModelProvider
+import com.proct.activities.inreal.utils.providers.DishesAndDetailedDishViewModelProvider
 import com.proct.activities.inreal.viewmodels.category.CategoryViewModel
+import com.proct.activities.inreal.viewmodels.dishes.DetailedDishViewModel
+import com.proct.activities.inreal.viewmodels.dishes.DishesViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -82,16 +86,42 @@ class DatabaseModule {
 
     @Provides
     @Singleton
+    fun provideDetailedDishViewModelAdapter(inRealDataLocalSource: InRealDataLocalSource): DetailedDishViewModelAdapter =
+        DetailedDishViewModelAdapter(inRealDataLocalSource)
+
+    @Provides
+    @Singleton
     fun provideCategoryAdnDishesViewModelProvider(dishesViewModelAdapter: DishesViewModelAdapter): CategoryAndDishesViewModelProvider =
         CategoryAndDishesViewModelProvider(dishesViewModelAdapter)
 
     @Provides
+    @Singleton
+    fun provideDishesAndDetailedDishViewModelProvider(detailedDishViewModelAdapter: DetailedDishViewModelAdapter): DishesAndDetailedDishViewModelProvider =
+        DishesAndDetailedDishViewModelProvider(detailedDishViewModelAdapter)
+
+    @Provides
     @IntoMap
     @ViewModelKey(CategoryViewModel::class)
-    fun provideConfigureViewModel(
+    fun provideCategoryViewModel(
         provider: CategoryAndDishesViewModelProvider,
         adapter: CategoryViewModelAdapter
     ): ViewModel =
         CategoryViewModel(provider, adapter)
 
+    @Provides
+    @IntoMap
+    @ViewModelKey(DishesViewModel::class)
+    fun provideDishesViewModel(
+        provider: DishesAndDetailedDishViewModelProvider,
+        adapter: DishesViewModelAdapter
+    ): ViewModel =
+        DishesViewModel(provider, adapter)
+
+    @Provides
+    @IntoMap
+    @ViewModelKey(DetailedDishViewModel::class)
+    fun provideDetailedDishViewModel(
+        adapter: DetailedDishViewModelAdapter
+    ): ViewModel =
+        DetailedDishViewModel(adapter)
 }

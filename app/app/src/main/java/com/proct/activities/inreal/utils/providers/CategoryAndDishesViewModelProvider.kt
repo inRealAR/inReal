@@ -20,7 +20,7 @@ class CategoryAndDishesViewModelProvider @Inject constructor(
 
     init {
         CoroutineScope(Dispatchers.IO).launch {
-            val type = null
+            _category.postValue(DishType.NONE)
         }
     }
 
@@ -28,6 +28,4 @@ class CategoryAndDishesViewModelProvider @Inject constructor(
         _category.postValue(type)
         dishesViewModelAdapter.type = type
     }
-
-
 }

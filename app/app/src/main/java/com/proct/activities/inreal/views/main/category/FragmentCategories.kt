@@ -54,6 +54,7 @@ class FragmentCategories : Fragment() {
         }
 
         adapter = CategoryCardAdapter(mutableListOf())
+        adapter!!.initListener(listener)
         recyclerView.adapter = adapter
         val layoutManager = LinearLayoutManager(activity)
         recyclerView.layoutManager = layoutManager
@@ -76,6 +77,7 @@ class FragmentCategories : Fragment() {
     private fun update(list: List<Category>) {
         if (adapter == null) {
             adapter = CategoryCardAdapter(listOfCategories!!)
+            adapter!!.initListener(listener)
         }
         val diff = DiffUtil.calculateDiff(DiffUtilsCategory(adapter!!.categories, list))
         adapter!!.categories = list
@@ -85,6 +87,4 @@ class FragmentCategories : Fragment() {
     interface CategoriesListener {
         fun onClickCategory(type: DishType)
     }
-
-
 }

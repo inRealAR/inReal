@@ -9,4 +9,5 @@ interface InRealDataSource {
     suspend fun getCategories(): List<Category>
     suspend fun getDishesList(type: DishType): List<Dish>
     suspend fun getOrderItemsList(): List<OrderItem>
+    suspend fun getDish(name: String) : Dish
 }

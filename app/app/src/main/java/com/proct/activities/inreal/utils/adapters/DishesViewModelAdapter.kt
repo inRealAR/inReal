@@ -10,10 +10,8 @@ import javax.inject.Singleton
 class DishesViewModelAdapter @Inject constructor(
     var inRealDataLocalSource: InRealDataLocalSource
 ) {
-    var type: DishType? = null
+    var type: DishType = DishType.NONE
 
-    suspend fun getDishesList(): List<Dish> {
-        return emptyList()
-    }
+    suspend fun getDishesList(): List<Dish> = inRealDataLocalSource.getDishesList(type)
 
 }

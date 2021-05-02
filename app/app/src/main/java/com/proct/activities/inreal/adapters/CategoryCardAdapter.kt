@@ -26,11 +26,15 @@ class CategoryCardAdapter(
         return CategoriesViewHolder(cv)
     }
 
+    fun initListener(listener: FragmentCategories.CategoriesListener ) {
+        this.listener = listener
+    }
+
     inner class CategoriesViewHolder(val cardView: CardView) : RecyclerView.ViewHolder(cardView)
 
     override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) {
         val cardView = holder.cardView
-        cardView.setOnClickListener { v: View? ->
+        cardView.setOnClickListener {
             listener!!.onClickCategory(
                 categories[position].type
             )

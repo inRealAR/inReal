@@ -47,14 +47,15 @@ class FragmentDishes : Fragment() {
         viewModel = viewModels<DishesViewModel> { viewModelFactory }.value
 
         listener = object : DishesListener {
-            override fun onClickCategory(name: String) {
-                mainNavController.navigate(R.id.fragmentDishes)
-                viewModel.getDishesList()
+            override fun onClickDish(name: String) {
+                mainNavController.navigate(R.id.fragmentDetailedDish)
+                viewModel.setName(name)
             }
 
         }
 
         adapter = DishCardAdapter(listOfDishes)
+        adapter!!.initListener(listener)
         recyclerView.adapter = adapter
         val layoutManager = LinearLayoutManager(activity)
         recyclerView.layoutManager = layoutManager
@@ -76,6 +77,7 @@ class FragmentDishes : Fragment() {
     private fun update(list: List<Dish>) {
         if (adapter == null) {
             adapter = DishCardAdapter(listOfDishes)
+            adapter!!.initListener(listener)
         }
         val diff = DiffUtil.calculateDiff(DiffUtilsDishes(adapter!!.dishes, list))
         adapter!!.dishes = list
@@ -83,7 +85,7 @@ class FragmentDishes : Fragment() {
     }
 
     interface DishesListener {
-        fun onClickCategory(name: String)
+        fun onClickDish(name: String)
     }
 
 

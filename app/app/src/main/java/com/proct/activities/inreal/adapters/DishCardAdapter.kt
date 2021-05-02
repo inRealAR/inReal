@@ -26,6 +26,10 @@ class DishCardAdapter(
         return DishViewHolder(cv)
     }
 
+    fun initListener(listener : FragmentDishes.DishesListener) {
+        this.listener = listener
+    }
+
     inner class DishViewHolder(val cardView: CardView) : RecyclerView.ViewHolder(cardView)
 
     override fun onBindViewHolder(holder: DishViewHolder, position: Int) {
@@ -42,14 +46,15 @@ class DishCardAdapter(
 
 
         val button = cardView.findViewById<View>(R.id.card_for_dish_button_for_choice)
-        button.setOnClickListener{ v: View? ->
-            listener!!.onClickCategory(
+
+        button.setOnClickListener{
+            listener!!.onClickDish(
                 dishes[position].name
             )
         }
 
-        cardView.setOnClickListener { v: View? ->
-            listener!!.onClickCategory(
+        image.setOnClickListener {
+            listener!!.onClickDish(
                 dishes[position].name
             )
         }

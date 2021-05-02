@@ -22,4 +22,6 @@ class InRealDataLocalSource @Inject constructor(
     }
 
     override suspend fun getOrderItemsList(): List<OrderItem> = orderItemDAO.getListOrder()
+
+    override suspend fun getDish(name: String): Dish = dishDAO.getDish(name)
 }

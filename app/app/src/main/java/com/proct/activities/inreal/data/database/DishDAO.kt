@@ -17,4 +17,7 @@ interface DishDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(dish: Dish)
+
+    @Query("select * from dishes where name = :name")
+    fun getDish(name: String) : Dish
 }
