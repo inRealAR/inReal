@@ -67,7 +67,8 @@
         tools:layout="@layout/fragment_main__order__empty_order" >
         <action
             android:id="@+id/action_emptyOrderFragment_to_fragmentCategories"
-            app:destination="@id/fragmentCategories"
-            app:popUpTo="@id/mainOrderFragment" />
+            app:destination="@id/fragmentInstructions"
+            app:popUpTo="@id/fragmentCategories"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

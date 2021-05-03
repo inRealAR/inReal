@@ -6,6 +6,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.proct.activities.inreal.R
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,8 +41,8 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.mainOrderFragment -> {
-                mainNavController.navigate(R.id.mainOrderFragment)
-//                mainNavController.
+                val navOptions = NavOptions.Builder().setPopUpTo(R.id.mainOrderFragment, false).build()
+                mainNavController.navigate(R.id.mainOrderFragment, null, navOptions)
                 return true
             }
             else -> super.onOptionsItemSelected(item)
