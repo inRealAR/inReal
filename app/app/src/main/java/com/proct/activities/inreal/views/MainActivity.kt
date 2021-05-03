@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         toolbar.setNavigationIcon(R.drawable.arrow_back)
-        toolbar.setNavigationOnClickListener { mainNavController.popBackStack() }
+        toolbar.setNavigationOnClickListener { mainNavController.navigateUp() }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.mainOrderFragment -> {
                 mainNavController.navigate(R.id.mainOrderFragment)
+//                mainNavController.
                 return true
             }
             else -> super.onOptionsItemSelected(item)

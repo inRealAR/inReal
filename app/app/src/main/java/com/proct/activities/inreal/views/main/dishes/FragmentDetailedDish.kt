@@ -50,7 +50,8 @@ class FragmentDetailedDish : Fragment() {
 
         listener = object : DetailedDishListener {
 
-            override fun onClickAddToOrder() {
+            override fun onClickAddToOrder(dish: Dish) {
+                viewModel.setDishToOrder(dish)
                 mainNavController.navigate(R.id.mainOrderFragment)
             }
 
@@ -60,7 +61,6 @@ class FragmentDetailedDish : Fragment() {
 
         }
 
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_main__dishes__detailed_dish, container, false)
     }
 
@@ -84,7 +84,7 @@ class FragmentDetailedDish : Fragment() {
         addToOrder =
             requireView().findViewById<Button>(R.id.detailed_card_for_dish_button_for_choice)
         addToOrder.setOnClickListener {
-            listener.onClickAddToOrder()
+            listener.onClickAddToOrder(dish)
         }
     }
 
@@ -110,6 +110,6 @@ class FragmentDetailedDish : Fragment() {
 }
 
 interface DetailedDishListener {
-    fun onClickAddToOrder()
+    fun onClickAddToOrder(dish: Dish)
     fun onClickSeeInAR()
 }

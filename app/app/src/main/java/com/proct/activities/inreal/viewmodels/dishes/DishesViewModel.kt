@@ -11,6 +11,7 @@ import com.proct.activities.inreal.utils.adapters.DishesViewModelAdapter
 import com.proct.activities.inreal.utils.providers.CategoryAndDishesViewModelProvider
 import com.proct.activities.inreal.utils.providers.DishesAndDetailedDishViewModelProvider
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class DishesViewModel(
@@ -22,10 +23,9 @@ class DishesViewModel(
     val dishesList: LiveData<MutableList<Dish>>
         get() = _dishesList
 
-
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            val listOfDishes = adapter.getDishesList()
+            val listOfDishes = adapter.getDishesList().first()
             _dishesList.postValue(listOfDishes.toMutableList())
         }
     }
@@ -33,7 +33,7 @@ class DishesViewModel(
     fun getDishesList() {
         Log.e("DishesViewModel", "GetDishesList")
         viewModelScope.launch(Dispatchers.IO) {
-            val listOfDishes = adapter.getDishesList()
+            val listOfDishes = adapter.getDishesList().first()
             _dishesList.postValue(listOfDishes.toMutableList())
         }
     }

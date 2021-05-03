@@ -10,7 +10,10 @@ data class OrderItem(
     var dish: Dish,
 
     @ColumnInfo(name = "countOfDish")
-    var countOfDish: Int
+    var countOfDish: Int,
+
+    @ColumnInfo(name = "currentPrice")
+    var currentPrice: Int
 )
 
 class DishConverter {

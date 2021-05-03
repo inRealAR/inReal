@@ -1,5 +1,6 @@
 package com.proct.activities.inreal.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,6 +34,7 @@ class CategoryCardAdapter(
     inner class CategoriesViewHolder(val cardView: CardView) : RecyclerView.ViewHolder(cardView)
 
     override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) {
+        Log.e("CategoriesViewHolder", "position: $position")
         val cardView = holder.cardView
         cardView.setOnClickListener {
             listener!!.onClickCategory(

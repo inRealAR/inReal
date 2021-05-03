@@ -6,12 +6,13 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.proct.activities.inreal.data.model.Category
 import com.proct.activities.inreal.data.model.Dish
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CategoryDAO {
 
     @Query("SELECT * FROM categories ORDER BY name")
-    fun getListCategories(): List<Category>
+    fun getListCategories(): Flow<List<Category>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(category: Category)

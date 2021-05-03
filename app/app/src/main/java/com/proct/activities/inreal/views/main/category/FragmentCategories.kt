@@ -65,7 +65,6 @@ class FragmentCategories : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         initObservers()
-
     }
 
     private fun initObservers() {

@@ -41,11 +41,9 @@
         android:label="fragment_main__main_order"
         tools:layout="@layout/fragment_main__main_order" >
         <action
-            android:id="@+id/action_mainOrderFragment_to_fillOrderFragment"
-            app:destination="@id/fillOrderFragment" />
-        <action
             android:id="@+id/action_mainOrderFragment_to_emptyOrderFragment"
-            app:destination="@id/emptyOrderFragment" />
+            app:destination="@id/emptyOrderFragment"
+            app:popUpTo="@id/mainOrderFragment" />
     </fragment>
     <fragment
         android:id="@+id/ARFragment"
@@ -65,10 +63,9 @@
         android:id="@+id/emptyOrderFragment"
         android:name="com.proct.activities.inreal.views.main.order.empty.EmptyOrderFragment"
         android:label="fragment_main__order__empty_order"
-        tools:layout="@layout/fragment_main__order__empty_order" />
-    <fragment
-        android:id="@+id/fillOrderFragment"
-        android:name="com.proct.activities.inreal.views.main.order.fill.FillOrderFragment"
-        android:label="fragment_main__order__fill_order"
-        tools:layout="@layout/fragment_main__order__fill_order" />
+        tools:layout="@layout/fragment_main__order__empty_order" >
+        <action
+            android:id="@+id/action_emptyOrderFragment_to_fragmentCategories"
+            app:destination="@id/fragmentCategories" />
+    </fragment>
 </navigation>
