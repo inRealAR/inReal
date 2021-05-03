@@ -43,7 +43,8 @@
         <action
             android:id="@+id/action_mainOrderFragment_to_emptyOrderFragment"
             app:destination="@id/emptyOrderFragment"
-            app:popUpTo="@id/mainOrderFragment" />
+            app:popUpTo="@id/mainOrderFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/ARFragment"
