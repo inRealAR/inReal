@@ -7,6 +7,7 @@ import androidx.room.Room
 import com.proct.activities.inreal.data.database.*
 import com.proct.activities.inreal.data.model.Category
 import com.proct.activities.inreal.data.model.Dish
+import com.proct.activities.inreal.data.model.OrderItem
 import com.proct.activities.inreal.data.sources.InRealDataLocalSource
 import com.proct.activities.inreal.utils.adapters.CategoryViewModelAdapter
 import com.proct.activities.inreal.utils.adapters.DetailedDishViewModelAdapter
@@ -56,6 +57,11 @@ class DatabaseModule {
                         result!!.dishDao().insert(dish)
                     }
                 }
+                for (orderItem in OrderItem.ListOfOrderListener.listOfOrderItems) {
+                    DataStoreScope.launch(Dispatchers.IO) {
+                        result!!.orderDao().insert(orderItem)
+                    }
+                }
                 Log.e("DatabaseModule", "AddCreateCallback")
             }
         }.build()
@@ -71,6 +77,13 @@ class DatabaseModule {
                 result!!.dishDao().insert(dish)
             }
         }
+
+        for (orderItem in OrderItem.ListOfOrderListener.listOfOrderItems) {
+            DataStoreScope.launch(Dispatchers.IO) {
+                result!!.orderDao().insert(orderItem)
+            }
+        }
+
         return result
     }
 

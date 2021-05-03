@@ -25,10 +25,8 @@ class DishesAndDetailedDishViewModelProvider @Inject constructor(
     }
 
     fun setDishName(name: String) {
-        CoroutineScope(Dispatchers.IO).launch {
             _dishName.postValue(name)
             detailedDishViewModelAdapter.name = name
-        }
     }
 
 

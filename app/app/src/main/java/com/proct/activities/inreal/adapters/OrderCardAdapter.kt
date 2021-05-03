@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.FtsOptions
 import com.proct.activities.inreal.R
 import com.proct.activities.inreal.data.model.OrderItem
 import com.proct.activities.inreal.views.main.order.MainOrderFragment
@@ -20,6 +21,11 @@ class OrderCardAdapter(
         val cv = LayoutInflater.from(parent.context)
             .inflate(R.layout.card_for_order, parent, false) as CardView
         return ViewHolderForOrder(cv)
+    }
+
+    fun setOrderList(list: List<OrderItem>) {
+        orderItems = list
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: ViewHolderForOrder, position: Int) {
@@ -63,8 +69,6 @@ class OrderCardAdapter(
         return orderItems.size
     }
 
-    inner class ViewHolderForOrder(val cardView: CardView) : RecyclerView.ViewHolder(
-        cardView
-    )
+    inner class ViewHolderForOrder(val cardView: CardView) : RecyclerView.ViewHolder(cardView)
 
 }

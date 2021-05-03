@@ -1,6 +1,7 @@
 package com.proct.activities.inreal.views.main.order
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,8 @@ import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.proct.activities.inreal.R
 import com.proct.activities.inreal.adapters.OrderCardAdapter
 import com.proct.activities.inreal.data.model.OrderItem
@@ -59,9 +62,25 @@ class MainOrderFragment : Fragment() {
                 viewModel.delete(orderItem)
             }
         }
-            adapterForOrder = OrderCardAdapter(listOfOrderItems, clickDish)
 
-        return inflater.inflate(R.layout.fragment_main__main_order, container, false)
+        val view = inflater.inflate(R.layout.fragment_main__main_order, container, false)
+        val recyclerView : RecyclerView = view.findViewById(R.id.fragment__main__main_order_fragment_recycler_view)
+        initRecycler(recyclerView)
+        return recyclerView
+    }
+
+    private fun initRecycler(recyclerView: RecyclerView) {
+        if (adapterForOrder == null) {
+            adapterForOrder = OrderCardAdapter(listOfOrderItems, clickDish)
+        }
+        recyclerView.adapter = adapterForOrder
+        val layoutManager = LinearLayoutManager(activity)
+        recyclerView.layoutManager = layoutManager
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.e("MainOrderFragment", "onResume")
     }
 
     interface ListenerClickDish {
@@ -84,19 +103,16 @@ class MainOrderFragment : Fragment() {
     }
 
     private fun update(orderItemsList: List<OrderItem>) {
-        if (adapterForOrder == null) {
-            adapterForOrder = OrderCardAdapter(listOfOrderItems, clickDish)
-        }
+
+
         val diff = DiffUtil.calculateDiff(
-            DiffUtilsOrder(
-                adapterForOrder!!.orderItems,
-                orderItemsList
-            )
+            DiffUtilsOrder(adapterForOrder!!.orderItems, orderItemsList)
         )
-        adapterForOrder!!.orderItems = orderItemsList
+        adapterForOrder!!.setOrderList(orderItemsList)
+        adapterForOrder!!.notifyDataSetChanged()
         diff.dispatchUpdatesTo(adapterForOrder!!)
 
-        if(orderItemsList.isEmpty()) {
+        if (orderItemsList.isEmpty()) {
             val navOptions = NavOptions.Builder().setPopUpTo(R.id.mainOrderFragment, true).build()
             mainNavController.navigate(R.id.emptyOrderFragment, null, navOptions)
         }

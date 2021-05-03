@@ -41,16 +41,6 @@ class CategoryViewModel @Inject constructor(
             }
             _categoriesList.postValue(listOfCategories)
         }
-
-
-
-//        viewModelScope.launch(Dispatchers.IO) {
-//            val listOfCategories : MutableList<Category> = adapter.getCategoriesList().first().toMutableList()
-//            if(listOfCategories.isEmpty()) {
-//                Log.e("h", "h")
-//            }
-//            _categoriesList.postValue(listOfCategories)
-//        }
     }
 
     fun setType(type: DishType) {

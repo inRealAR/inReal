@@ -28,7 +28,6 @@ data class Dish(
     var ingredients: String,
 
     @ColumnInfo(name = "type")
-    @TypeConverters(DishTypeConverter::class)
     var type: DishType,
 
     @ColumnInfo(name = "weight")

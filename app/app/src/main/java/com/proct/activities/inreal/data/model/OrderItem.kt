@@ -1,6 +1,7 @@
 package com.proct.activities.inreal.data.model
 
 import androidx.room.*
+import com.proct.activities.inreal.R
 
 @Entity(tableName = "orders")
 data class OrderItem(
@@ -14,33 +15,34 @@ data class OrderItem(
 
     @ColumnInfo(name = "currentPrice")
     var currentPrice: Int
-)
-
-class DishConverter {
-
-    @TypeConverter
-    fun fromDish(dish: Dish): String {
-        val typeConverter = DishTypeConverter()
-        val type = typeConverter.fromDishType(dish.type)
-        return "${dish.name}&&&${dish.description}&&&${dish.price}&&&${dish.imageId}&&&${dish.calories}&&&${dish.ingredients}&&&${type}&&&${dish.weight}&&&${dish.rawForObject}"
-    }
-
-    @TypeConverter
-    fun toDish(data: String) : Dish {
-        val array = data.split("&&&")
-        val typeConverter = DishTypeConverter()
-        val type = typeConverter.toDishType(array[6].toInt())
-        return Dish(
-            array[0],
-            array[1],
-            array[2],
-            array[3].toInt(),
-            array[4],
-            array[5],
-            type,
-            array[7],
-            array[8].toInt()
+) {
+    object ListOfOrderListener {
+        val listOfOrderItems  : MutableList<OrderItem> = mutableListOf(
+           OrderItem(Dish(
+               "Салат",
+               "Листья салата в\nсоке лимона и специях",
+               "250",
+               R.drawable.standart_salad,
+               "17; 2; 1; 2.7",
+               "Листья салата",
+               DishType.SALADS,
+               "100 Г",
+               R.raw.standart_salad),
+           1,
+           250),
+            OrderItem(Dish(
+                "Салат Топ",
+                "Листья салата в\nсоке лимона и специях",
+                "350",
+                R.drawable.standart_salad,
+                "17; 2; 1; 2.7",
+                "Листья салата",
+                DishType.SALADS,
+                "100 Г",
+                R.raw.standart_salad),
+                1,
+                350)
         )
     }
-
 }
+

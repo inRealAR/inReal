@@ -10,6 +10,7 @@ interface InRealDataSource {
     suspend fun getCategories(): Flow<List<Category>>
     suspend fun getDishesList(type: DishType): Flow<List<Dish>>
     suspend fun getOrderItemsList(): Flow<List<OrderItem>>
-    suspend fun setOrderItemsList(list: List<OrderItem>)
+    suspend fun insertOrderItem(orderItem: OrderItem)
     suspend fun getDish(name: String) : Dish
+    suspend fun deleteOrderItem(orderItem: OrderItem)
 }

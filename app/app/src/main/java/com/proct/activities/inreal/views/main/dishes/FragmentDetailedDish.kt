@@ -51,14 +51,13 @@ class FragmentDetailedDish : Fragment() {
         listener = object : DetailedDishListener {
 
             override fun onClickAddToOrder(dish: Dish) {
-                viewModel.setDishToOrder(dish)
                 mainNavController.navigate(R.id.mainOrderFragment)
+                viewModel.setDishToOrder(dish)
             }
 
             override fun onClickSeeInAR() {
                 mainNavController.navigate(R.id.ARFragment)
             }
-
         }
 
         return inflater.inflate(R.layout.fragment_main__dishes__detailed_dish, container, false)
@@ -78,11 +77,11 @@ class FragmentDetailedDish : Fragment() {
         priceOfDish =
             requireView().findViewById(R.id.detailed_card_for_dish_price_text_view)
 
-        seeInAR = requireView().findViewById<Button>(R.id.detailed_card_for_dish_button_see_in_ar)
+        seeInAR = requireView().findViewById(R.id.detailed_card_for_dish_button_see_in_ar)
         seeInAR.setOnClickListener { listener.onClickSeeInAR() }
 
         addToOrder =
-            requireView().findViewById<Button>(R.id.detailed_card_for_dish_button_for_choice)
+            requireView().findViewById(R.id.detailed_card_for_dish_button_for_choice)
         addToOrder.setOnClickListener {
             listener.onClickAddToOrder(dish)
         }

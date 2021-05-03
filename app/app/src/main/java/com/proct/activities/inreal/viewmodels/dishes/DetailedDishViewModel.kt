@@ -37,8 +37,6 @@ class DetailedDishViewModel @Inject constructor(
     }
 
     fun setDishToOrder(dish: Dish) {
-        viewModelScope.launch(Dispatchers.Default) {
             provider.setDishToOrder(dish)
-        }
     }
 }

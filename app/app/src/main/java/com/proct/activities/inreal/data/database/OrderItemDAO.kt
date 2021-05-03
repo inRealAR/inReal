@@ -14,4 +14,7 @@ interface OrderItemDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(orderItem: OrderItem)
 
+    @Delete
+    fun delete(orderItem: OrderItem)
+
 }

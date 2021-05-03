@@ -17,7 +17,6 @@ data class Category(
     var imageId: Int,
 
     @ColumnInfo(name = "type")
-    @TypeConverters(DishTypeConverter::class)
     var type: DishType
 )
 {
