@@ -24,7 +24,11 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         toolbar.setNavigationIcon(R.drawable.arrow_back)
-        toolbar.setNavigationOnClickListener { mainNavController.navigateUp() }
+        toolbar.setNavigationOnClickListener {
+            mainNavController.navigateUp()
+
+
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
