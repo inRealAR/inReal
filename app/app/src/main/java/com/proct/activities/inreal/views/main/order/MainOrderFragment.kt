@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import com.proct.activities.inreal.R
@@ -17,6 +18,7 @@ import com.proct.activities.inreal.utils.diffutils.order.DiffUtilsOrder
 import com.proct.activities.inreal.viewmodels.order.OrderViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class MainOrderFragment : Fragment() {
@@ -85,12 +87,18 @@ class MainOrderFragment : Fragment() {
         if (adapterForOrder == null) {
             adapterForOrder = OrderCardAdapter(listOfOrderItems, clickDish)
         }
-        val diff = DiffUtil.calculateDiff(DiffUtilsOrder(adapterForOrder!!.orderItems, orderItemsList))
+        val diff = DiffUtil.calculateDiff(
+            DiffUtilsOrder(
+                adapterForOrder!!.orderItems,
+                orderItemsList
+            )
+        )
         adapterForOrder!!.orderItems = orderItemsList
         diff.dispatchUpdatesTo(adapterForOrder!!)
 
         if(orderItemsList.isEmpty()) {
-            mainNavController.navigate(R.id.emptyOrderFragment)
+            val navOptions = NavOptions.Builder().setPopUpTo(R.id.mainOrderFragment, true).build()
+            mainNavController.navigate(R.id.emptyOrderFragment, null, navOptions)
         }
 
     }

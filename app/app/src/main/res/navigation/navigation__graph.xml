@@ -68,7 +68,6 @@
         <action
             android:id="@+id/action_emptyOrderFragment_to_fragmentCategories"
             app:destination="@id/fragmentCategories"
-            app:popUpTo="@id/fragmentDishes"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/mainOrderFragment" />
     </fragment>
 </navigation>

@@ -59,6 +59,18 @@ class DatabaseModule {
                 Log.e("DatabaseModule", "AddCreateCallback")
             }
         }.build()
+
+        for (category in Category.ListOfCategoriesListener.listOfCategories) {
+            Log.e("DatabaseModule", "insert ${category.name}")
+            DataStoreScope.launch(Dispatchers.IO) {
+                result!!.categoryDao().insert(category)
+            }
+        }
+        for (dish in Dish.ListOfDishesLoader.listOfDishes) {
+            DataStoreScope.launch(Dispatchers.IO) {
+                result!!.dishDao().insert(dish)
+            }
+        }
         return result
     }
 

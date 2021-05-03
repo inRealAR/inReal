@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.proct.activities.inreal.R
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,7 +31,9 @@ class EmptyOrderFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         buttonBackToCategories = requireView().findViewById(R.id.fragment_empty_order_button_categories)
-        buttonBackToCategories.setOnClickListener { mainNavController.navigate(R.id.fragmentCategories) }
+        buttonBackToCategories.setOnClickListener {
+            val navOptions = NavOptions.Builder().setPopUpTo(R.id.emptyOrderFragment, true).build()
+            mainNavController.navigate(R.id.fragmentCategories, null, navOptions) }
     }
 
 }
