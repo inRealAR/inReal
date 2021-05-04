@@ -26,7 +26,11 @@ class OrderViewModel(
             adapter.getOrderList().drop(1).collect {
                 _orderItemsList.postValue(it.toMutableList())
             }
+            if(_orderItemsList.value == null) {
+                _orderItemsList.postValue(mutableListOf())
+            }
         }
+//        Log.e("OrderViewModel", "${_orderItemsList.value!!}")
     }
 
     fun increment(item: OrderItem) {

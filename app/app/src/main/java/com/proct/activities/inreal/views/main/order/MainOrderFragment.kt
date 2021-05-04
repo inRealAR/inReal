@@ -10,14 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.proct.activities.inreal.R
 import com.proct.activities.inreal.adapters.OrderCardAdapter
 import com.proct.activities.inreal.data.model.OrderItem
 import com.proct.activities.inreal.di.ViewModelFactory
-import com.proct.activities.inreal.utils.diffutils.order.DiffUtilsOrder
 import com.proct.activities.inreal.viewmodels.order.OrderViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -38,6 +36,8 @@ class MainOrderFragment : Fragment() {
     private var adapterForOrder: OrderCardAdapter? = null
 
     private lateinit var clickDish: ListenerClickDish
+
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,8 +63,10 @@ class MainOrderFragment : Fragment() {
             }
         }
 
+
         val view = inflater.inflate(R.layout.fragment_main__main_order, container, false)
-        val recyclerView : RecyclerView = view.findViewById(R.id.fragment__main__main_order_fragment_recycler_view)
+        recyclerView = view.findViewById(R.id.fragment__main__main_order_fragment_recycler_view)
+        initObservers()
         initRecycler(recyclerView)
         return recyclerView
     }
@@ -73,8 +75,9 @@ class MainOrderFragment : Fragment() {
         if (adapterForOrder == null) {
             adapterForOrder = OrderCardAdapter(listOfOrderItems, clickDish)
         }
+        val layoutManager = LinearLayoutManager(requireContext())
+
         recyclerView.adapter = adapterForOrder
-        val layoutManager = LinearLayoutManager(activity)
         recyclerView.layoutManager = layoutManager
     }
 
@@ -91,31 +94,24 @@ class MainOrderFragment : Fragment() {
         fun onDeleteClickListener(orderItem: OrderItem)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        initObservers()
-    }
-
     private fun initObservers() {
         viewModel.orderItemsList.observe(viewLifecycleOwner) {
             update(it)
         }
+        if(viewModel.orderItemsList.value != null) {
+            listOfOrderItems = viewModel.orderItemsList.value!!
+        }
     }
 
     private fun update(orderItemsList: List<OrderItem>) {
+        adapterForOrder = OrderCardAdapter(orderItemsList, clickDish)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = adapterForOrder
 
-
-        val diff = DiffUtil.calculateDiff(
-            DiffUtilsOrder(adapterForOrder!!.orderItems, orderItemsList)
-        )
-        adapterForOrder!!.setOrderList(orderItemsList)
-        adapterForOrder!!.notifyDataSetChanged()
-        diff.dispatchUpdatesTo(adapterForOrder!!)
-
-        if (orderItemsList.isEmpty()) {
+        listOfOrderItems = orderItemsList.toMutableList()
+        if (listOfOrderItems.isEmpty()) {
             val navOptions = NavOptions.Builder().setPopUpTo(R.id.mainOrderFragment, true).build()
             mainNavController.navigate(R.id.emptyOrderFragment, null, navOptions)
         }
-
     }
 }

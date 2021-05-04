@@ -27,8 +27,6 @@ class MainActivity : AppCompatActivity() {
         toolbar.setNavigationIcon(R.drawable.arrow_back)
         toolbar.setNavigationOnClickListener {
             mainNavController.navigateUp()
-
-
         }
     }
 
@@ -41,7 +39,8 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.mainOrderFragment -> {
-                val navOptions = NavOptions.Builder().setPopUpTo(R.id.mainOrderFragment, false).build()
+                val navOptions =
+                    NavOptions.Builder().setPopUpTo(R.id.mainOrderFragment, false).build()
                 mainNavController.navigate(R.id.mainOrderFragment, null, navOptions)
                 return true
             }

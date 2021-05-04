@@ -19,7 +19,7 @@ data class OrderItem(
     object ListOfOrderListener {
         val listOfOrderItems  : MutableList<OrderItem> = mutableListOf(
            OrderItem(Dish(
-               "Салат",
+               "Горячее",
                "Листья салата в\nсоке лимона и специях",
                "250",
                R.drawable.standart_salad,
@@ -31,7 +31,7 @@ data class OrderItem(
            1,
            250),
             OrderItem(Dish(
-                "Салат Топ",
+                "Салат yt Топ",
                 "Листья салата в\nсоке лимона и специях",
                 "350",
                 R.drawable.standart_salad,
