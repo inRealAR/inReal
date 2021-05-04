@@ -13,19 +13,21 @@ import com.proct.activities.inreal.data.model.OrderItem
 import com.proct.activities.inreal.views.main.order.MainOrderFragment
 
 class OrderCardAdapter(
-    var orderItems: List<OrderItem>,
     private var clickDish: MainOrderFragment.ListenerClickDish
 ) :
     RecyclerView.Adapter<OrderCardAdapter.ViewHolderForOrder>() {
+
+    var orderItems: List<OrderItem> = emptyList()
+        set(value) {
+            field = value
+            Log.e("OrderCardAdapter", "Setting $value")
+            notifyDataSetChanged()
+        }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderForOrder {
         val cv = LayoutInflater.from(parent.context)
             .inflate(R.layout.card_for_order, parent, false) as CardView
         return ViewHolderForOrder(cv)
-    }
-
-    fun setOrderList(list: List<OrderItem>) {
-        orderItems = list
-        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: ViewHolderForOrder, position: Int) {

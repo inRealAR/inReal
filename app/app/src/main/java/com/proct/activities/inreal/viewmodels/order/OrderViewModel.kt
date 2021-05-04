@@ -10,27 +10,27 @@ import com.proct.activities.inreal.utils.adapters.OrderViewModelAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.drop
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class OrderViewModel(
     var adapter: OrderViewModelAdapter
 ) : ViewModel() {
 
-    private val _orderItemsList = MutableLiveData<MutableList<OrderItem>>()
-    val orderItemsList: LiveData<MutableList<OrderItem>>
+    private val _orderItemsList = MutableLiveData<List<OrderItem>>()
+    val orderItemsList: LiveData<List<OrderItem>>
         get() = _orderItemsList
 
     init {
 
         viewModelScope.launch(Dispatchers.IO) {
-            adapter.getOrderList().drop(1).collect {
-                _orderItemsList.postValue(it.toMutableList())
-            }
-            if(_orderItemsList.value == null) {
-                _orderItemsList.postValue(mutableListOf())
+            val list = adapter.getOrderList().first().toMutableList()
+            Log.e("OrderViewModel", "LIST RETURN $list")
+            withContext(Dispatchers.Main) {
+                _orderItemsList.postValue(list)
             }
         }
-//        Log.e("OrderViewModel", "${_orderItemsList.value!!}")
     }
 
     fun increment(item: OrderItem) {

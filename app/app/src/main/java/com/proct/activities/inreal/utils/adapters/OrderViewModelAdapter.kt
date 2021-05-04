@@ -25,6 +25,7 @@ class OrderViewModelAdapter @Inject constructor(
 
 
     suspend fun addToOrderList(item: OrderItem) {
+        Log.e("OrderViewModelAdapter", "Adding ${item.dish.name}")
         inRealDataLocalSource.insertOrderItem(item)
     }
 

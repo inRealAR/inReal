@@ -31,11 +31,7 @@ class MainOrderFragment : Fragment() {
 
     private lateinit var viewModel: OrderViewModel
 
-    private var listOfOrderItems: MutableList<OrderItem> = mutableListOf()
-
     private var adapterForOrder: OrderCardAdapter? = null
-
-    private lateinit var clickDish: ListenerClickDish
 
     private lateinit var recyclerView: RecyclerView
 
@@ -48,7 +44,7 @@ class MainOrderFragment : Fragment() {
 
         viewModel = viewModels<OrderViewModel> { viewModelFactory }.value
 
-        clickDish = object : ListenerClickDish {
+        val clickDish = object : ListenerClickDish {
 
             override fun onPlusClickListener(orderItem: OrderItem) {
                 viewModel.increment(orderItem)
@@ -63,22 +59,20 @@ class MainOrderFragment : Fragment() {
             }
         }
 
-
         val view = inflater.inflate(R.layout.fragment_main__main_order, container, false)
         recyclerView = view.findViewById(R.id.fragment__main__main_order_fragment_recycler_view)
+        recyclerView.init(clickDish)
         initObservers()
-        initRecycler(recyclerView)
         return recyclerView
     }
 
-    private fun initRecycler(recyclerView: RecyclerView) {
+    private fun RecyclerView.init(clickDish: ListenerClickDish) {
         if (adapterForOrder == null) {
-            adapterForOrder = OrderCardAdapter(listOfOrderItems, clickDish)
+            adapterForOrder = OrderCardAdapter(clickDish)
         }
         val layoutManager = LinearLayoutManager(requireContext())
-
-        recyclerView.adapter = adapterForOrder
-        recyclerView.layoutManager = layoutManager
+        this.layoutManager = layoutManager
+        this.adapter = adapterForOrder
     }
 
     override fun onResume() {
@@ -98,18 +92,12 @@ class MainOrderFragment : Fragment() {
         viewModel.orderItemsList.observe(viewLifecycleOwner) {
             update(it)
         }
-        if(viewModel.orderItemsList.value != null) {
-            listOfOrderItems = viewModel.orderItemsList.value!!
-        }
     }
 
     private fun update(orderItemsList: List<OrderItem>) {
-        adapterForOrder = OrderCardAdapter(orderItemsList, clickDish)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = adapterForOrder
+        adapterForOrder!!.orderItems = orderItemsList
 
-        listOfOrderItems = orderItemsList.toMutableList()
-        if (listOfOrderItems.isEmpty()) {
+        if (adapterForOrder!!.orderItems.isEmpty()) {
             val navOptions = NavOptions.Builder().setPopUpTo(R.id.mainOrderFragment, true).build()
             mainNavController.navigate(R.id.emptyOrderFragment, null, navOptions)
         }

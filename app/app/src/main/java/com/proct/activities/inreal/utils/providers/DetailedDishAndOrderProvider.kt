@@ -15,15 +15,11 @@ import javax.inject.Singleton
 class DetailedDishAndOrderProvider @Inject constructor(
     var orderViewModelAdapter: OrderViewModelAdapter
 ) {
-    private val _dish = MutableLiveData<Dish>()
-    val dish: LiveData<Dish>
-        get() = _dish
+//    private val _dish = MutableLiveData<Dish>()
+//    val dish: LiveData<Dish>
+//        get() = _dish
 
-    fun setDishToOrder(dish: Dish) {
-        _dish.postValue(dish)
-        CoroutineScope(Dispatchers.Default).launch {
-
-            orderViewModelAdapter.addToOrderList(OrderItem(_dish.value!!, 1, _dish.value!!.price.toInt()))
-        }
+    suspend fun setDishToOrder(dish: Dish) {
+        orderViewModelAdapter.addToOrderList(OrderItem(dish, 1, dish.price.toInt()))
     }
 }
