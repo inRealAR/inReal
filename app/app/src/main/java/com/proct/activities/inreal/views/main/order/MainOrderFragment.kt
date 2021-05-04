@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
@@ -35,6 +36,8 @@ class MainOrderFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
 
+    private lateinit var textView: TextView
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,10 +63,11 @@ class MainOrderFragment : Fragment() {
         }
 
         val view = inflater.inflate(R.layout.fragment_main__main_order, container, false)
+        textView = view.findViewById(R.id.fragment__main__main_order_fragment_price_tv)
         recyclerView = view.findViewById(R.id.fragment__main__main_order_fragment_recycler_view)
         recyclerView.init(clickDish)
         initObservers()
-        return recyclerView
+        return view
     }
 
     private fun RecyclerView.init(clickDish: ListenerClickDish) {
@@ -92,6 +96,13 @@ class MainOrderFragment : Fragment() {
         viewModel.orderItemsList.observe(viewLifecycleOwner) {
             update(it)
         }
+        viewModel.allPrice.observe(viewLifecycleOwner) {
+            updatePrice(it)
+        }
+    }
+
+    private fun updatePrice(it: Int) {
+        textView.text = it.toString()
     }
 
     private fun update(orderItemsList: List<OrderItem>) {

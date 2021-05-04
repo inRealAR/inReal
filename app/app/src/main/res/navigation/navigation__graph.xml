@@ -29,9 +29,6 @@
         android:label="fragment_main__dishes__detailed_dish"
         tools:layout="@layout/fragment_main__dishes__detailed_dish" >
         <action
-            android:id="@+id/action_fragmentDetailedDish_to_mainOrderFragment"
-            app:destination="@id/mainOrderFragment" />
-        <action
             android:id="@+id/action_fragmentDetailedDish_to_ARFragment"
             app:destination="@id/ARFragment" />
     </fragment>

@@ -51,7 +51,6 @@ class FragmentDetailedDish : Fragment() {
 
             override fun onClickAddToOrder(dish: Dish) {
                 viewModel.setDishToOrder(dish)
-                mainNavController.navigate(R.id.mainOrderFragment)
             }
 
             override fun onClickSeeInAR() {

@@ -8,11 +8,11 @@ import androidx.lifecycle.viewModelScope
 import com.proct.activities.inreal.data.model.OrderItem
 import com.proct.activities.inreal.utils.adapters.OrderViewModelAdapter
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.drop
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.concurrent.atomic.AtomicInteger
 
 class OrderViewModel(
     var adapter: OrderViewModelAdapter
@@ -22,6 +22,10 @@ class OrderViewModel(
     val orderItemsList: LiveData<List<OrderItem>>
         get() = _orderItemsList
 
+    private val _allPrice = MutableLiveData<Int>()
+    val allPrice: LiveData<Int>
+        get() = _allPrice
+
     init {
 
         viewModelScope.launch(Dispatchers.IO) {
@@ -29,6 +33,15 @@ class OrderViewModel(
             Log.e("OrderViewModel", "LIST RETURN $list")
             withContext(Dispatchers.Main) {
                 _orderItemsList.postValue(list)
+            }
+            val price = AtomicInteger(0)
+
+            list.asFlow().collect {
+                price.addAndGet(it.countOfDish * it.dish.price.toInt())
+            }
+
+            withContext(Dispatchers.Main) {
+                _allPrice.postValue(price.get())
             }
         }
     }
@@ -40,6 +53,14 @@ class OrderViewModel(
             Log.e("OrderViewModel", "LIST RETURN $list")
             withContext(Dispatchers.Main) {
                 _orderItemsList.postValue(list)
+            }
+            val price = AtomicInteger(0)
+            list.asFlow().collect {
+                price.addAndGet(it.countOfDish * it.dish.price.toInt())
+            }
+
+            withContext(Dispatchers.Main) {
+                _allPrice.postValue(price.get())
             }
         }
 
@@ -53,6 +74,16 @@ class OrderViewModel(
             withContext(Dispatchers.Main) {
                 _orderItemsList.postValue(list)
             }
+
+            val price = AtomicInteger(0)
+            list.asFlow().collect {
+                price.addAndGet((it.countOfDish * it.dish.price.toInt()))
+            }
+
+            withContext(Dispatchers.Main) {
+                _allPrice.postValue(price.get())
+            }
+
         }
     }
 
@@ -77,6 +108,21 @@ class OrderViewModel(
                         }
                     }
                 }
+            }
+
+            val list = adapter.getOrderList().first().toMutableList()
+            Log.e("OrderViewModel", "LIST RETURN $list")
+            withContext(Dispatchers.Main) {
+                _orderItemsList.postValue(list)
+            }
+
+            val price = AtomicInteger(0)
+            list.asFlow().collect {
+                price.addAndGet((it.countOfDish * it.dish.price.toInt()))
+            }
+
+            withContext(Dispatchers.Main) {
+                _allPrice.postValue(price.get())
             }
         }
     }
