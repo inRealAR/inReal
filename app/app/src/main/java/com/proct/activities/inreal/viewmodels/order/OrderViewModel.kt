@@ -36,20 +36,22 @@ class OrderViewModel(
     fun increment(item: OrderItem) {
         viewModelScope.launch(Dispatchers.Default) {
             adapter.increment(item)
-        }
-
-        viewModelScope.launch(Dispatchers.IO) {
-            adapter.getOrderList().drop(1).collect {
-                _orderItemsList.postValue(it.toMutableList())
+            val list = adapter.getOrderList().first().toMutableList()
+            Log.e("OrderViewModel", "LIST RETURN $list")
+            withContext(Dispatchers.Main) {
+                _orderItemsList.postValue(list)
             }
         }
+
     }
 
     fun delete(item: OrderItem) {
         viewModelScope.launch(Dispatchers.IO) {
             adapter.delete(item)
-            adapter.getOrderList().drop(1).collect {
-                _orderItemsList.postValue(it.toMutableList())
+            val list = adapter.getOrderList().first().toMutableList()
+            Log.e("OrderViewModel", "LIST RETURN $list")
+            withContext(Dispatchers.Main) {
+                _orderItemsList.postValue(list)
             }
         }
     }
