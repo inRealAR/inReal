@@ -39,7 +39,6 @@ class FragmentDetailedDish : Fragment() {
     private lateinit var seeInAR: Button
     private lateinit var addToOrder: Button
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

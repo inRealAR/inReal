@@ -73,7 +73,5 @@ class OrderViewModelAdapter @Inject constructor(
         inRealDataLocalSource.deleteOrderItem(item)
     }
 
-    suspend fun getOrderList(): Flow<List<OrderItem>> {
-        return inRealDataLocalSource.getOrderItemsList()
-    }
+    suspend fun getOrderList(): Flow<List<OrderItem>> = inRealDataLocalSource.getOrderItemsList()
 }
