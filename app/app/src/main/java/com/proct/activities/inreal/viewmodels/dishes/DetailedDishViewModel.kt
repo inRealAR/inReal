@@ -1,6 +1,5 @@
 package com.proct.activities.inreal.viewmodels.dishes
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,6 +9,7 @@ import com.proct.activities.inreal.utils.adapters.DetailedDishViewModelAdapter
 import com.proct.activities.inreal.utils.providers.DetailedDishAndOrderProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class DetailedDishViewModel @Inject constructor(
@@ -24,20 +24,14 @@ class DetailedDishViewModel @Inject constructor(
     init {
         viewModelScope.launch(Dispatchers.IO) {
             val dish = adapter.getDish()
-            Log.e("DetailedDishViewModel", "$dish.name")
-            _dish.postValue(dish)
-        }
-    }
-
-    fun getDish() {
-        viewModelScope.launch(Dispatchers.IO) {
-            val dish = adapter.getDish()
-            _dish.postValue(dish)
+            withContext(Dispatchers.Main) {
+                _dish.postValue(dish)
+            }
         }
     }
 
     fun setDishToOrder(dish: Dish) {
-        viewModelScope.launch( Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.IO) {
             provider.setDishToOrder(dish)
         }
     }

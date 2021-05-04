@@ -44,43 +44,17 @@ class DatabaseModule {
             appContext,
             InRealDatabase::class.java,
             "InrRealApp.db"
-        ).addCreateCallback {
-            DataStoreScope.launch(Dispatchers.IO) {
-                for (category in Category.ListOfCategoriesListener.listOfCategories) {
-                    Log.e("DatabaseModule", "insert ${category.name}")
-                    DataStoreScope.launch(Dispatchers.IO) {
-                        result!!.categoryDao().insert(category)
-                    }
-                }
-                for (dish in Dish.ListOfDishesLoader.listOfDishes) {
-                    DataStoreScope.launch(Dispatchers.IO) {
-                        result!!.dishDao().insert(dish)
-                    }
-                }
-                for (orderItem in OrderItem.ListOfOrderListener.listOfOrderItems) {
-                    DataStoreScope.launch(Dispatchers.IO) {
-                        result!!.orderDao().insert(orderItem)
-                    }
-                }
-                Log.e("DatabaseModule", "AddCreateCallback")
-            }
-        }.build()
+        ).build()
 
         for (category in Category.ListOfCategoriesListener.listOfCategories) {
             Log.e("DatabaseModule", "insert ${category.name}")
             DataStoreScope.launch(Dispatchers.IO) {
-                result!!.categoryDao().insert(category)
+                result.categoryDao().insert(category)
             }
         }
         for (dish in Dish.ListOfDishesLoader.listOfDishes) {
             DataStoreScope.launch(Dispatchers.IO) {
-                result!!.dishDao().insert(dish)
-            }
-        }
-
-        for (orderItem in OrderItem.ListOfOrderListener.listOfOrderItems) {
-            DataStoreScope.launch(Dispatchers.IO) {
-                result!!.orderDao().insert(orderItem)
+                result.dishDao().insert(dish)
             }
         }
 

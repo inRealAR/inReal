@@ -13,6 +13,7 @@ import com.proct.activities.inreal.utils.providers.DishesAndDetailedDishViewMode
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DishesViewModel(
     var provider: DishesAndDetailedDishViewModelProvider,
@@ -25,22 +26,14 @@ class DishesViewModel(
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            val listOfDishes = adapter.getDishesList().first()
-            _dishesList.postValue(listOfDishes.toMutableList())
-        }
-    }
-
-    fun getDishesList() {
-        Log.e("DishesViewModel", "GetDishesList")
-        viewModelScope.launch(Dispatchers.IO) {
-            val listOfDishes = adapter.getDishesList().first()
-            _dishesList.postValue(listOfDishes.toMutableList())
+            val list = adapter.getDishesList().first().toMutableList()
+            withContext(Dispatchers.Main) {
+                _dishesList.postValue(list)
+            }
         }
     }
 
     fun setName(name: String) {
         provider.setDishName(name)
     }
-
-
 }

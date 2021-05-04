@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class CategoryViewModel @Inject constructor(
@@ -26,20 +27,12 @@ class CategoryViewModel @Inject constructor(
         get() = _categoriesList
 
     init {
-
         viewModelScope.launch(Dispatchers.IO) {
-            adapter.getCategoriesList().drop(1).collect {
-                _categoriesList.postValue(it.toMutableList())
+            val list = adapter.getCategoriesList().first().toMutableList()
+            Log.e("OrderViewModel", "LIST RETURN $list")
+            withContext(Dispatchers.Main) {
+                _categoriesList.postValue(list)
             }
-        }
-
-        viewModelScope.launch(Dispatchers.IO) {
-            var listOfCategories: MutableList<Category> =
-                adapter.getCategoriesList().first().toMutableList()
-            if (listOfCategories.isEmpty()) {
-                Log.e("h", "h")
-            }
-            _categoriesList.postValue(listOfCategories)
         }
     }
 

@@ -15,34 +15,6 @@ data class OrderItem(
 
     @ColumnInfo(name = "currentPrice")
     var currentPrice: Int
-) {
-    object ListOfOrderListener {
-        val listOfOrderItems  : MutableList<OrderItem> = mutableListOf(
-           OrderItem(Dish(
-               "Горячее",
-               "Листья салата в\nсоке лимона и специях",
-               "250",
-               R.drawable.standart_salad,
-               "17; 2; 1; 2.7",
-               "Листья салата",
-               DishType.SALADS,
-               "100 Г",
-               R.raw.standart_salad),
-           1,
-           250),
-            OrderItem(Dish(
-                "Салат yt Топ",
-                "Листья салата в\nсоке лимона и специях",
-                "350",
-                R.drawable.standart_salad,
-                "17; 2; 1; 2.7",
-                "Листья салата",
-                DishType.SALADS,
-                "100 Г",
-                R.raw.standart_salad),
-                1,
-                350)
-        )
-    }
-}
+)
+
 
