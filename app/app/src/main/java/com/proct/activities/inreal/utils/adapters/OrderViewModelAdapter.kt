@@ -5,12 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.proct.activities.inreal.data.model.OrderItem
 import com.proct.activities.inreal.data.sources.InRealDataLocalSource
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.drop
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -29,37 +27,40 @@ class OrderViewModelAdapter @Inject constructor(
         inRealDataLocalSource.insertOrderItem(item)
     }
 
-    fun increment(item: OrderItem) {
-        CoroutineScope(Dispatchers.IO).launch {
-            getOrderList().drop(1).collect {
-                _orderItemsList.postValue(it.toMutableList())
-            }
+    suspend fun increment(item: OrderItem) {
 
-            if (_orderItemsList.value == null) {
-                _orderItemsList.postValue(mutableListOf(item))
-            } else if (_orderItemsList.value!!.isEmpty()) {
+        val list = getOrderList().first().toMutableList()
+        Log.e("OrderViewModelAdapter", "LIST RETURN $list")
+        withContext(Dispatchers.Main) {
+
+            _orderItemsList.postValue(list)
+        }
+
+        if (_orderItemsList.value == null) {
+            _orderItemsList.postValue(mutableListOf(item))
+        } else if (_orderItemsList.value!!.isEmpty()) {
+            addToOrderList(item)
+        } else {
+            var isFind = false
+            for (itemToFind in _orderItemsList.value!!) {
+                if (itemToFind.dish == item.dish) {
+                    isFind = true
+                    val defaultPrice: Int = itemToFind.dish.price.toInt()
+                    val currentCount: Int = itemToFind.countOfDish + 1
+                    itemToFind.countOfDish = currentCount
+                    itemToFind.currentPrice = defaultPrice * currentCount
+                    break
+                }
+            }
+            if (!isFind) {
                 addToOrderList(item)
-            } else {
-                var isFind = false
-                for (itemToFind in _orderItemsList.value!!) {
-                    if (itemToFind.dish == item.dish) {
-                        isFind = true
-                        val defaultPrice: Int = itemToFind.dish.price.toInt()
-                        val currentCount: Int = itemToFind.countOfDish + 1
-                        itemToFind.countOfDish = currentCount
-                        itemToFind.currentPrice = defaultPrice * currentCount
-                        break
-                    }
-                }
-                if (!isFind) {
-                    addToOrderList(item)
-                }
-            }
-
-            if (_orderItemsList.value!!.isNotEmpty()) {
-                setOrderList(_orderItemsList.value!!)
             }
         }
+
+        if (_orderItemsList.value!!.isNotEmpty()) {
+            setOrderList(_orderItemsList.value!!)
+        }
+
     }
 
     suspend fun setOrderList(list: List<OrderItem>) {

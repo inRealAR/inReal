@@ -20,6 +20,6 @@ class DetailedDishAndOrderProvider @Inject constructor(
 //        get() = _dish
 
     suspend fun setDishToOrder(dish: Dish) {
-        orderViewModelAdapter.addToOrderList(OrderItem(dish, 1, dish.price.toInt()))
+        orderViewModelAdapter.increment(OrderItem(dish, 1, dish.price.toInt()))
     }
 }

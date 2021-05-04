@@ -1,7 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/fragment__main__main_order_fragment_recycler_view"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background" />
+    android:background="@drawable/gradient_background"
+    tools:context=".views.main.order.MainOrderFragment">
 
+
+    <TextView
+        android:id="@+id/fragment__main__main_order_fragment_price_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margins_for_priceTextView_in_fragmentFillOrder"
+        android:textColor="@color/beige"
+        android:textSize="@dimen/text_size_for_priceTextView_in_fragmentFillOrder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="400"
+        />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/fragment_fill_order_pic_ruble"
+        android:layout_width="@dimen/height_and_width_for_picOfRuble"
+        android:layout_height="@dimen/height_and_width_for_picOfRuble"
+        android:src="@drawable/ruble"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@+id/fragment__main__main_order_fragment_price_tv"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/gr_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dividing_line"
+        app:layout_constraintTop_toBottomOf="@+id/fragment__main__main_order_fragment_price_tv"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fragment__main__main_order_fragment_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gr_background" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
