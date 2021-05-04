@@ -3,6 +3,7 @@ package com.proct.activities.inreal.utils.adapters
 import com.proct.activities.inreal.data.model.Dish
 import com.proct.activities.inreal.data.model.DishType
 import com.proct.activities.inreal.data.sources.InRealDataLocalSource
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -12,6 +13,6 @@ class DishesViewModelAdapter @Inject constructor(
 ) {
     var type: DishType = DishType.NONE
 
-    suspend fun getDishesList(): List<Dish> = inRealDataLocalSource.getDishesList(type)
+    suspend fun getDishesList(): Flow<List<Dish>> = inRealDataLocalSource.getDishesList(type)
 
 }

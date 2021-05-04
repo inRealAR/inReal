@@ -6,6 +6,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.proct.activities.inreal.R
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,7 +25,9 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         toolbar.setNavigationIcon(R.drawable.arrow_back)
-        toolbar.setNavigationOnClickListener { mainNavController.popBackStack() }
+        toolbar.setNavigationOnClickListener {
+            mainNavController.navigateUp()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -36,7 +39,9 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.mainOrderFragment -> {
-                mainNavController.navigate(R.id.mainOrderFragment)
+                val navOptions =
+                    NavOptions.Builder().setPopUpTo(R.id.mainOrderFragment, false).build()
+                mainNavController.navigate(R.id.mainOrderFragment, null, navOptions)
                 return true
             }
             else -> super.onOptionsItemSelected(item)

@@ -4,6 +4,7 @@ import com.proct.activities.inreal.data.database.CategoryDAO
 import com.proct.activities.inreal.data.database.DishDAO
 import com.proct.activities.inreal.data.database.OrderItemDAO
 import com.proct.activities.inreal.data.model.*
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -13,15 +14,19 @@ class InRealDataLocalSource @Inject constructor(
     private val categoryDAO: CategoryDAO,
     private val orderItemDAO: OrderItemDAO
 ) : InRealDataSource {
-    override suspend fun getCategories(): List<Category> = categoryDAO.getListCategories()
+    override suspend fun getCategories(): Flow<List<Category>> = categoryDAO.getListCategories()
 
-    override suspend fun getDishesList(type: DishType): List<Dish> {
+    override suspend fun getDishesList(type: DishType): Flow<List<Dish>> {
         val typeConverter = DishTypeConverter()
         val dishType = typeConverter.fromDishType(type)
         return dishDAO.getDishesList(dishType)
     }
 
-    override suspend fun getOrderItemsList(): List<OrderItem> = orderItemDAO.getListOrder()
+    override suspend fun getOrderItemsList(): Flow<List<OrderItem>> = orderItemDAO.getListOrder()
+
+    override suspend fun insertOrderItem(orderItem: OrderItem) = orderItemDAO.insert(orderItem)
 
     override suspend fun getDish(name: String): Dish = dishDAO.getDish(name)
+
+    override suspend fun deleteOrderItem(orderItem: OrderItem) = orderItemDAO.delete(orderItem)
 }

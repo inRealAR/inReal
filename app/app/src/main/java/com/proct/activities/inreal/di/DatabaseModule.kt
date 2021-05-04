@@ -7,22 +7,28 @@ import androidx.room.Room
 import com.proct.activities.inreal.data.database.*
 import com.proct.activities.inreal.data.model.Category
 import com.proct.activities.inreal.data.model.Dish
+import com.proct.activities.inreal.data.model.OrderItem
 import com.proct.activities.inreal.data.sources.InRealDataLocalSource
 import com.proct.activities.inreal.utils.adapters.CategoryViewModelAdapter
 import com.proct.activities.inreal.utils.adapters.DetailedDishViewModelAdapter
 import com.proct.activities.inreal.utils.adapters.DishesViewModelAdapter
+import com.proct.activities.inreal.utils.adapters.OrderViewModelAdapter
 import com.proct.activities.inreal.utils.providers.CategoryAndDishesViewModelProvider
+import com.proct.activities.inreal.utils.providers.DetailedDishAndOrderProvider
 import com.proct.activities.inreal.utils.providers.DishesAndDetailedDishViewModelProvider
 import com.proct.activities.inreal.viewmodels.category.CategoryViewModel
 import com.proct.activities.inreal.viewmodels.dishes.DetailedDishViewModel
 import com.proct.activities.inreal.viewmodels.dishes.DishesViewModel
+import com.proct.activities.inreal.viewmodels.order.OrderViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoMap
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import javax.inject.Singleton
 
@@ -37,20 +43,47 @@ class DatabaseModule {
         result = Room.databaseBuilder(
             appContext,
             InRealDatabase::class.java,
-            "inreal.db"
+            "InrRealApp.db"
         ).addCreateCallback {
-            for (dish in Dish.ListOfDishesLoader.listOfDishes) {
-                DataStoreScope.launch(Dispatchers.IO) {
-                    result!!.dishDao().insert(dish)
+            DataStoreScope.launch(Dispatchers.IO) {
+                for (category in Category.ListOfCategoriesListener.listOfCategories) {
+                    Log.e("DatabaseModule", "insert ${category.name}")
+                    DataStoreScope.launch(Dispatchers.IO) {
+                        result!!.categoryDao().insert(category)
+                    }
                 }
-            }
-            for (category in Category.ListOfCategoriesListener.listOfCategories) {
-                DataStoreScope.launch(Dispatchers.IO) {
-                    result!!.categoryDao().insert(category)
+                for (dish in Dish.ListOfDishesLoader.listOfDishes) {
+                    DataStoreScope.launch(Dispatchers.IO) {
+                        result!!.dishDao().insert(dish)
+                    }
                 }
+                for (orderItem in OrderItem.ListOfOrderListener.listOfOrderItems) {
+                    DataStoreScope.launch(Dispatchers.IO) {
+                        result!!.orderDao().insert(orderItem)
+                    }
+                }
+                Log.e("DatabaseModule", "AddCreateCallback")
             }
-            Log.e("DatabaseModule", "AddCreateCallback")
         }.build()
+
+        for (category in Category.ListOfCategoriesListener.listOfCategories) {
+            Log.e("DatabaseModule", "insert ${category.name}")
+            DataStoreScope.launch(Dispatchers.IO) {
+                result!!.categoryDao().insert(category)
+            }
+        }
+        for (dish in Dish.ListOfDishesLoader.listOfDishes) {
+            DataStoreScope.launch(Dispatchers.IO) {
+                result!!.dishDao().insert(dish)
+            }
+        }
+
+        for (orderItem in OrderItem.ListOfOrderListener.listOfOrderItems) {
+            DataStoreScope.launch(Dispatchers.IO) {
+                result!!.orderDao().insert(orderItem)
+            }
+        }
+
         return result
     }
 
@@ -86,6 +119,12 @@ class DatabaseModule {
 
     @Provides
     @Singleton
+    fun provideOrderViewModelAdapter(inRealDataLocalSource: InRealDataLocalSource): OrderViewModelAdapter =
+        OrderViewModelAdapter(inRealDataLocalSource)
+
+
+    @Provides
+    @Singleton
     fun provideDetailedDishViewModelAdapter(inRealDataLocalSource: InRealDataLocalSource): DetailedDishViewModelAdapter =
         DetailedDishViewModelAdapter(inRealDataLocalSource)
 
@@ -98,6 +137,11 @@ class DatabaseModule {
     @Singleton
     fun provideDishesAndDetailedDishViewModelProvider(detailedDishViewModelAdapter: DetailedDishViewModelAdapter): DishesAndDetailedDishViewModelProvider =
         DishesAndDetailedDishViewModelProvider(detailedDishViewModelAdapter)
+
+    @Provides
+    @Singleton
+    fun provideDetailedDishAndOrderProvider(orderViewModelAdapter: OrderViewModelAdapter): DetailedDishAndOrderProvider =
+        DetailedDishAndOrderProvider(orderViewModelAdapter)
 
     @Provides
     @IntoMap
@@ -121,7 +165,19 @@ class DatabaseModule {
     @IntoMap
     @ViewModelKey(DetailedDishViewModel::class)
     fun provideDetailedDishViewModel(
+        provider: DetailedDishAndOrderProvider,
         adapter: DetailedDishViewModelAdapter
     ): ViewModel =
-        DetailedDishViewModel(adapter)
+        DetailedDishViewModel(provider, adapter)
+
+
+
+    @Provides
+    @IntoMap
+    @ViewModelKey(OrderViewModel::class)
+    fun provideOrderViewModel(
+        adapter: OrderViewModelAdapter
+    ): ViewModel =
+        OrderViewModel(adapter)
+
 }

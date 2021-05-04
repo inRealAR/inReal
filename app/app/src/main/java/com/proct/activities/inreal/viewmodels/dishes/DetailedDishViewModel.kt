@@ -6,20 +6,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.proct.activities.inreal.data.model.Dish
-import com.proct.activities.inreal.data.model.DishType
 import com.proct.activities.inreal.utils.adapters.DetailedDishViewModelAdapter
+import com.proct.activities.inreal.utils.providers.DetailedDishAndOrderProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DetailedDishViewModel @Inject constructor(
-   var adapter: DetailedDishViewModelAdapter
+    var provider: DetailedDishAndOrderProvider,
+    var adapter: DetailedDishViewModelAdapter
 ) : ViewModel() {
 
     private val _dish = MutableLiveData<Dish>()
     val dish: LiveData<Dish>
         get() = _dish
-
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
@@ -36,5 +36,9 @@ class DetailedDishViewModel @Inject constructor(
         }
     }
 
-
+    fun setDishToOrder(dish: Dish) {
+        viewModelScope.launch( Dispatchers.IO) {
+            provider.setDishToOrder(dish)
+        }
+    }
 }

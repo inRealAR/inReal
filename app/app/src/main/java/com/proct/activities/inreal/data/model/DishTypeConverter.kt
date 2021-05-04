@@ -19,5 +19,4 @@ class DishTypeConverter {
             else -> DishType.NONE
         }
     }
-
 }

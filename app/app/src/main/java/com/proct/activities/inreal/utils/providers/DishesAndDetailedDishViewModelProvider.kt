@@ -13,22 +13,20 @@ import javax.inject.Inject
 class DishesAndDetailedDishViewModelProvider @Inject constructor(
     var detailedDishViewModelAdapter: DetailedDishViewModelAdapter
 ) {
-    private val _dishName = MutableLiveData<String>()
-    val dishName: LiveData<String>
-        get() = _dishName
+//    private val _dishName = MutableLiveData<String>()
+//    val dishName: LiveData<String>
+//        get() = _dishName
 
 
-    init {
-        CoroutineScope(Dispatchers.IO).launch {
-            _dishName.postValue("none")
-        }
-    }
+//    init {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            _dishName.postValue("none")
+//        }
+//    }
 
     fun setDishName(name: String) {
-        CoroutineScope(Dispatchers.IO).launch {
-            _dishName.postValue(name)
+//            _dishName.postValue(name)
             detailedDishViewModelAdapter.name = name
-        }
     }
 
 

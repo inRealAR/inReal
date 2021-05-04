@@ -8,12 +8,13 @@ import androidx.room.Query
 import com.proct.activities.inreal.data.model.Dish
 import com.proct.activities.inreal.data.model.DishType
 import com.proct.activities.inreal.data.model.DishTypeConverter
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface DishDAO {
 
     @Query("select * from dishes where type = :dishType order by name")
-    fun getDishesList(dishType: Int): List<Dish>
+    fun getDishesList(dishType: Int): Flow<List<Dish>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(dish: Dish)

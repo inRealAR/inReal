@@ -48,8 +48,8 @@ class FragmentDishes : Fragment() {
 
         listener = object : DishesListener {
             override fun onClickDish(name: String) {
-                mainNavController.navigate(R.id.fragmentDetailedDish)
                 viewModel.setName(name)
+                mainNavController.navigate(R.id.fragmentDetailedDish)
             }
 
         }
