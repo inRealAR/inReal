@@ -7,7 +7,6 @@
     android:background="@drawable/gradient_background"
     tools:context=".views.main.order.MainOrderFragment">
 
-
     <TextView
         android:id="@+id/fragment__main__main_order_fragment_price_tv"
         android:layout_width="wrap_content"
@@ -15,35 +14,35 @@
         android:layout_margin="@dimen/margins_for_priceTextView_in_fragmentFillOrder"
         android:textColor="@color/beige"
         android:textSize="@dimen/text_size_for_priceTextView_in_fragmentFillOrder"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="400"
-        />
-
+        tools:text="400" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/fragment_fill_order_pic_ruble"
+        android:id="@+id/fragment__main__main_order_fragment_rouble_iv"
         android:layout_width="@dimen/height_and_width_for_picOfRuble"
         android:layout_height="@dimen/height_and_width_for_picOfRuble"
-        android:src="@drawable/ruble"
         android:layout_marginTop="10dp"
+        android:src="@drawable/ruble"
+        android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/fragment__main__main_order_fragment_price_tv"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/gr_background"
+        android:id="@+id/fragment__main__main_order_fragment_line_iv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         android:src="@drawable/dividing_line"
-        app:layout_constraintTop_toBottomOf="@+id/fragment__main__main_order_fragment_price_tv"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/fragment__main__main_order_fragment_price_tv" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment__main__main_order_fragment_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gr_background" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment__main__main_order_fragment_line_iv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
