@@ -1,5 +1,6 @@
 package com.proct.activities.inreal.views.main.dishes
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import com.proct.activities.inreal.R
 import com.proct.activities.inreal.data.model.Dish
 import com.proct.activities.inreal.di.ViewModelFactory
 import com.proct.activities.inreal.viewmodels.dishes.DetailedDishViewModel
+import com.proct.activities.inreal.views.main.ar.ARActivity
 import dagger.hilt.android.AndroidEntryPoint
 import java.lang.String
 import javax.inject.Inject
@@ -53,9 +55,12 @@ class FragmentDetailedDish : Fragment() {
                 viewModel.setDishToOrder(dish)
             }
 
-            override fun onClickSeeInAR(name: kotlin.String) {
-                viewModel.setNameToAR(name)
-                mainNavController.navigate(R.id.ARFragment)
+            override fun onClickSeeInAR(dish: Dish) {
+//                viewModel.setNameToAR(dish.name)
+                val intent = Intent(activity, ARActivity::class.java)
+                val rawForObject: Int = dish.rawForObject
+                intent.putExtra("rawForObject", rawForObject)
+                startActivity(intent)
             }
         }
 
@@ -77,7 +82,7 @@ class FragmentDetailedDish : Fragment() {
             requireView().findViewById(R.id.detailed_card_for_dish_price_text_view)
 
         seeInAR = requireView().findViewById(R.id.detailed_card_for_dish_button_see_in_ar)
-        seeInAR.setOnClickListener { listener.onClickSeeInAR(dish.name) }
+        seeInAR.setOnClickListener { listener.onClickSeeInAR(dish) }
 
         addToOrder =
             requireView().findViewById(R.id.detailed_card_for_dish_button_for_choice)
@@ -109,5 +114,5 @@ class FragmentDetailedDish : Fragment() {
 
 interface DetailedDishListener {
     fun onClickAddToOrder(dish: Dish)
-    fun onClickSeeInAR(name: kotlin.String)
+    fun onClickSeeInAR(dish: Dish)
 }

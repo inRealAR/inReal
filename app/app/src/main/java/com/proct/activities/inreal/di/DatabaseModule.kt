@@ -4,17 +4,14 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.room.Room
-import androidx.room.Room.databaseBuilder
 import com.proct.activities.inreal.data.database.*
 import com.proct.activities.inreal.data.model.Category
 import com.proct.activities.inreal.data.model.Dish
 import com.proct.activities.inreal.data.sources.InRealDataLocalSource
 import com.proct.activities.inreal.utils.adapters.*
 import com.proct.activities.inreal.utils.providers.CategoryAndDishesViewModelProvider
-import com.proct.activities.inreal.utils.providers.DetailedDishAndARViewModelProvider
 import com.proct.activities.inreal.utils.providers.DetailedDishAndOrderViewModelProvider
 import com.proct.activities.inreal.utils.providers.DishesAndDetailedDishViewModelProvider
-import com.proct.activities.inreal.viewmodels.ar.ARViewModel
 import com.proct.activities.inreal.viewmodels.category.CategoryViewModel
 import com.proct.activities.inreal.viewmodels.dishes.DetailedDishViewModel
 import com.proct.activities.inreal.viewmodels.dishes.DishesViewModel
@@ -120,17 +117,6 @@ class DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideARViewModelAdapter(inRealDataLocalSource: InRealDataLocalSource): ARViewModelAdapter =
-        ARViewModelAdapter(inRealDataLocalSource)
-
-    @Provides
-    @Singleton
-    fun provideDetailedDishAndARViewModelProvider(arViewModelAdapter: ARViewModelAdapter): DetailedDishAndARViewModelProvider =
-        DetailedDishAndARViewModelProvider(arViewModelAdapter)
-
-
-    @Provides
-    @Singleton
     fun provideCategoryAdnDishesViewModelProvider(dishesViewModelAdapter: DishesViewModelAdapter): CategoryAndDishesViewModelProvider =
         CategoryAndDishesViewModelProvider(dishesViewModelAdapter)
 
@@ -167,10 +153,9 @@ class DatabaseModule {
     @ViewModelKey(DetailedDishViewModel::class)
     fun provideDetailedDishViewModel(
         providerOrder: DetailedDishAndOrderViewModelProvider,
-        providerAR: DetailedDishAndARViewModelProvider,
         adapter: DetailedDishViewModelAdapter
     ): ViewModel =
-        DetailedDishViewModel(providerOrder, providerAR, adapter)
+        DetailedDishViewModel(providerOrder, adapter)
 
     @Provides
     @IntoMap
@@ -179,12 +164,4 @@ class DatabaseModule {
         adapter: OrderViewModelAdapter
     ): ViewModel =
         OrderViewModel(adapter)
-
-    @Provides
-    @IntoMap
-    @ViewModelKey(ARViewModel::class)
-    fun provideARViewModel(
-        adapter: ARViewModelAdapter
-    ): ViewModel =
-        ARViewModel(adapter)
 }

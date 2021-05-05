@@ -9,19 +9,23 @@
         android:required="true" />
     <uses-feature android:name="android.hardware.camera.ar" />
 
-
     <application
+        android:name=".InRealApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".InRealApp"
         android:theme="@style/Theme.InReal">
+
 
         <meta-data
             android:name="com.google.ar.core"
             android:value="required" />
+
+        <activity
+            android:name=".views.main.ar.ARActivity"
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".views.MainActivity"

@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.proct.activities.inreal.data.model.Dish
 import com.proct.activities.inreal.utils.adapters.DetailedDishViewModelAdapter
-import com.proct.activities.inreal.utils.providers.DetailedDishAndARViewModelProvider
 import com.proct.activities.inreal.utils.providers.DetailedDishAndOrderViewModelProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,7 +14,6 @@ import javax.inject.Inject
 
 class DetailedDishViewModel @Inject constructor(
     var providerOrder: DetailedDishAndOrderViewModelProvider,
-    var providerAR: DetailedDishAndARViewModelProvider,
     var adapter: DetailedDishViewModelAdapter
 ) : ViewModel() {
 
@@ -29,12 +27,6 @@ class DetailedDishViewModel @Inject constructor(
             withContext(Dispatchers.Main) {
                 _dish.postValue(dish)
             }
-        }
-    }
-
-    fun setNameToAR(name: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            providerAR.setDishToAR(name)
         }
     }
 
