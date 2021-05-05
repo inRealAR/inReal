@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -38,6 +39,10 @@ class MainOrderFragment : Fragment() {
 
     private lateinit var textView: TextView
 
+    private lateinit var imageViewRouble: ImageView
+
+    private lateinit var imageViewLine: ImageView
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -62,8 +67,11 @@ class MainOrderFragment : Fragment() {
             }
         }
 
+
         val view = inflater.inflate(R.layout.fragment_main__main_order, container, false)
         textView = view.findViewById(R.id.fragment__main__main_order_fragment_price_tv)
+        imageViewRouble = view.findViewById(R.id.fragment__main__main_order_fragment_rouble_iv)
+        imageViewLine = view.findViewById(R.id.fragment__main__main_order_fragment_line_iv)
         recyclerView = view.findViewById(R.id.fragment__main__main_order_fragment_recycler_view)
         recyclerView.init(clickDish)
         initObservers()
@@ -109,8 +117,16 @@ class MainOrderFragment : Fragment() {
         adapterForOrder!!.orderItems = orderItemsList
 
         if (adapterForOrder!!.orderItems.isEmpty()) {
+
+            textView.visibility = View.INVISIBLE
+            imageViewRouble.visibility = View.INVISIBLE
+            imageViewLine.visibility = View.INVISIBLE
             val navOptions = NavOptions.Builder().setPopUpTo(R.id.mainOrderFragment, true).build()
             mainNavController.navigate(R.id.emptyOrderFragment, null, navOptions)
+        } else {
+            textView.visibility = View.VISIBLE
+            imageViewRouble.visibility = View.VISIBLE
+            imageViewLine.visibility = View.VISIBLE
         }
     }
 }

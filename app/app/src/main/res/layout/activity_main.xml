@@ -12,6 +12,7 @@
         android:layout_height="@dimen/toolbar_height"
         android:layout_width="match_parent"
         android:id="@+id/toolbar"
+        android:textColor="@color/beige"
         android:background="@color/choco"/>
 
     <androidx.appcompat.widget.AppCompatImageView
