@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.MapKey
 import javax.inject.Inject
 import javax.inject.Provider
-import javax.inject.Singleton
 import kotlin.reflect.KClass
 
 @Suppress("UNCHECKED_CAST")

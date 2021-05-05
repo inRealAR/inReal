@@ -1,7 +1,6 @@
 package com.proct.activities.inreal.views.main.order
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -67,7 +66,6 @@ class MainOrderFragment : Fragment() {
             }
         }
 
-
         val view = inflater.inflate(R.layout.fragment_main__main_order, container, false)
         textView = view.findViewById(R.id.fragment__main__main_order_fragment_price_tv)
         imageViewRouble = view.findViewById(R.id.fragment__main__main_order_fragment_rouble_iv)
@@ -85,11 +83,6 @@ class MainOrderFragment : Fragment() {
         val layoutManager = LinearLayoutManager(requireContext())
         this.layoutManager = layoutManager
         this.adapter = adapterForOrder
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.e("MainOrderFragment", "onResume")
     }
 
     interface ListenerClickDish {

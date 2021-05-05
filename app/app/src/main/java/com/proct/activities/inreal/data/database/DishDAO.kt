@@ -1,13 +1,10 @@
 package com.proct.activities.inreal.data.database
 
-
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.proct.activities.inreal.data.model.Dish
-import com.proct.activities.inreal.data.model.DishType
-import com.proct.activities.inreal.data.model.DishTypeConverter
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -20,5 +17,5 @@ interface DishDAO {
     fun insert(dish: Dish)
 
     @Query("select * from dishes where name = :name")
-    fun getDish(name: String) : Dish
+    fun getDish(name: String): Dish
 }

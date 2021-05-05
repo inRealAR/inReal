@@ -1,9 +1,10 @@
-package com.proct.activities.inreal.data.sources
+package com.proct.activities.inreal.repositories
 
 import com.proct.activities.inreal.data.database.CategoryDAO
 import com.proct.activities.inreal.data.database.DishDAO
 import com.proct.activities.inreal.data.database.OrderItemDAO
 import com.proct.activities.inreal.data.model.*
+import com.proct.activities.inreal.data.sources.InRealDataSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton

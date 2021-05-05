@@ -16,7 +16,7 @@ import com.proct.activities.inreal.views.main.category.FragmentCategories
 class CategoryCardAdapter(
     var categories: List<Category>
 ) : RecyclerView.Adapter<CategoryCardAdapter.CategoriesViewHolder>() {
-            private var listener : FragmentCategories.CategoriesListener? = null
+    private var listener: FragmentCategories.CategoriesListener? = null
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -27,7 +27,7 @@ class CategoryCardAdapter(
         return CategoriesViewHolder(cv)
     }
 
-    fun initListener(listener: FragmentCategories.CategoriesListener ) {
+    fun initListener(listener: FragmentCategories.CategoriesListener) {
         this.listener = listener
     }
 
@@ -53,6 +53,3 @@ class CategoryCardAdapter(
         return categories.size
     }
 }
-
-
-

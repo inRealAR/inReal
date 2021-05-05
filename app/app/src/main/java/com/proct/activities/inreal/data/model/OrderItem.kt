@@ -1,7 +1,9 @@
 package com.proct.activities.inreal.data.model
 
-import androidx.room.*
-import com.proct.activities.inreal.R
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 
 @Entity(tableName = "orders")
 data class OrderItem(
@@ -16,5 +18,3 @@ data class OrderItem(
     @ColumnInfo(name = "currentPrice")
     var currentPrice: Int
 )
-
-

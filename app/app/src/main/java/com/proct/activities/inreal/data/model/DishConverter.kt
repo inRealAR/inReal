@@ -12,7 +12,7 @@ class DishConverter {
     }
 
     @TypeConverter
-    fun toDish(data: String) : Dish {
+    fun toDish(data: String): Dish {
         val array = data.split("&&&")
         val typeConverter = DishTypeConverter()
         val type = typeConverter.toDishType(array[6].toInt())
@@ -28,5 +28,4 @@ class DishConverter {
             array[8].toInt()
         )
     }
-
 }

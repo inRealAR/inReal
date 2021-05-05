@@ -24,7 +24,7 @@ class DetailedDishViewModel @Inject constructor(
     init {
         viewModelScope.launch(Dispatchers.IO) {
             val dish = adapter.getDish()
-            if(dish.name != "none"){
+            if (dish.name != "none") {
 
                 withContext(Dispatchers.Main) {
                     _dish.postValue(dish)

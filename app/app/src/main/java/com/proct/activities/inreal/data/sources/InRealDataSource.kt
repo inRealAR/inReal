@@ -13,6 +13,6 @@ interface InRealDataSource {
     suspend fun insertOrderItem(orderItem: OrderItem)
     suspend fun insertCategory(category: Category)
     suspend fun insertDish(dish: Dish)
-    suspend fun getDish(name: String) : Dish
+    suspend fun getDish(name: String): Dish
     suspend fun deleteOrderItem(orderItem: OrderItem)
 }

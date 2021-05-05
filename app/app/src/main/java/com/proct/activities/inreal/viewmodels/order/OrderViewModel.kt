@@ -8,8 +8,9 @@ import androidx.lifecycle.viewModelScope
 import com.proct.activities.inreal.data.model.OrderItem
 import com.proct.activities.inreal.utils.adapters.OrderViewModelAdapter
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.concurrent.atomic.AtomicInteger
@@ -63,7 +64,6 @@ class OrderViewModel(
                 _allPrice.postValue(price.get())
             }
         }
-
     }
 
     fun delete(item: OrderItem) {

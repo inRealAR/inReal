@@ -7,7 +7,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.FtsOptions
 import com.proct.activities.inreal.R
 import com.proct.activities.inreal.data.model.OrderItem
 import com.proct.activities.inreal.views.main.order.MainOrderFragment
@@ -23,6 +22,8 @@ class OrderCardAdapter(
             Log.e("OrderCardAdapter", "Setting $value")
             notifyDataSetChanged()
         }
+
+    inner class ViewHolderForOrder(val cardView: CardView) : RecyclerView.ViewHolder(cardView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderForOrder {
         val cv = LayoutInflater.from(parent.context)
@@ -44,33 +45,22 @@ class OrderCardAdapter(
         val plus = cardView.findViewById<ImageView>(R.id.order_card_plus)
         val minus = cardView.findViewById<ImageView>(R.id.order_card_minus)
         plus.setOnClickListener {
-            Log.e(
-                "AdapterForOrder",
-                "PLUSPLUSPLUSPLUSPLUSPLUSPLUSPLUSPLUSPLUSPLUSPLUSPLUSPLUS"
-            )
             clickDish.onPlusClickListener(currentItem)
             count.text = currentItem.countOfDish.toString()
             priceOfDish.text = currentItem.currentPrice.toString()
-            notifyDataSetChanged()
         }
         minus.setOnClickListener {
             clickDish.onMinusClickListener(currentItem)
             count.text = currentItem.countOfDish.toString()
             priceOfDish.text = currentItem.currentPrice.toString()
-            Log.e("AdapterForOrder", orderItems.toString())
-            notifyDataSetChanged()
         }
         val delete = cardView.findViewById<ImageView>(R.id.order_card_delete)
         delete.setOnClickListener {
             clickDish.onDeleteClickListener(currentItem)
-            notifyDataSetChanged()
         }
     }
 
     override fun getItemCount(): Int {
         return orderItems.size
     }
-
-    inner class ViewHolderForOrder(val cardView: CardView) : RecyclerView.ViewHolder(cardView)
-
 }

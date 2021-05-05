@@ -51,7 +51,6 @@ class FragmentDishes : Fragment() {
                 viewModel.setName(name)
                 mainNavController.navigate(R.id.fragmentDetailedDish)
             }
-
         }
 
         adapter = DishCardAdapter(listOfDishes)
@@ -87,6 +86,4 @@ class FragmentDishes : Fragment() {
     interface DishesListener {
         fun onClickDish(name: String)
     }
-
-
 }

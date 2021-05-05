@@ -75,7 +75,8 @@ class FragmentDetailedDish : Fragment() {
         kbguOfDish = requireView().findViewById(R.id.detailed_card_for_dish_kbgu_text_view)
         nameOfDish = requireView().findViewById(R.id.detailed_card_for_dish_name_text_view)
         pictureOfDish = requireView().findViewById(R.id.detailed_card_for_dish_picture)
-        ingredientsOfDish = requireView().findViewById(R.id.detailed_card_for_dish_ingredients_text_view)
+        ingredientsOfDish =
+            requireView().findViewById(R.id.detailed_card_for_dish_ingredients_text_view)
         priceOfDish = requireView().findViewById(R.id.detailed_card_for_dish_price_text_view)
         seeInAR = requireView().findViewById(R.id.detailed_card_for_dish_button_see_in_ar)
         seeInAR.setOnClickListener { listener.onClickSeeInAR(viewModel.dish.value!!) }
@@ -91,7 +92,7 @@ class FragmentDetailedDish : Fragment() {
     private fun setVisibilityToVisible() {
         nameOfDish.visibility = View.VISIBLE
         kbguOfDish.visibility = View.VISIBLE
-        cardkbguOfDish.visibility= View.VISIBLE
+        cardkbguOfDish.visibility = View.VISIBLE
         pictureOfDish.visibility = View.VISIBLE
         ingredientsOfDish.visibility = View.VISIBLE
         priceOfDish.visibility = View.VISIBLE
@@ -106,7 +107,7 @@ class FragmentDetailedDish : Fragment() {
     private fun setVisibilityToInvisible() {
         nameOfDish.visibility = View.INVISIBLE
         kbguOfDish.visibility = View.INVISIBLE
-        cardkbguOfDish.visibility= View.INVISIBLE
+        cardkbguOfDish.visibility = View.INVISIBLE
         pictureOfDish.visibility = View.INVISIBLE
         ingredientsOfDish.visibility = View.INVISIBLE
         priceOfDish.visibility = View.INVISIBLE

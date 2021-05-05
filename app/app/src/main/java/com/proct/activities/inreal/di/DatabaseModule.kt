@@ -1,13 +1,13 @@
 package com.proct.activities.inreal.di
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.room.Room
-import com.proct.activities.inreal.data.database.*
-import com.proct.activities.inreal.data.model.Category
-import com.proct.activities.inreal.data.model.Dish
-import com.proct.activities.inreal.data.sources.InRealDataLocalSource
+import com.proct.activities.inreal.data.database.CategoryDAO
+import com.proct.activities.inreal.data.database.DishDAO
+import com.proct.activities.inreal.data.database.InRealDatabase
+import com.proct.activities.inreal.data.database.OrderItemDAO
+import com.proct.activities.inreal.repositories.InRealDataLocalSource
 import com.proct.activities.inreal.utils.adapters.CategoryViewModelAdapter
 import com.proct.activities.inreal.utils.adapters.DetailedDishViewModelAdapter
 import com.proct.activities.inreal.utils.adapters.DishesViewModelAdapter
@@ -25,7 +25,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoMap
-import kotlinx.coroutines.*
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
@@ -44,6 +43,7 @@ class DatabaseModule {
 
         return result
     }
+
     @Provides
     fun provideDishDao(database: InRealDatabase): DishDAO {
         return database.dishDao()

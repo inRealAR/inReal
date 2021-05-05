@@ -3,7 +3,6 @@ package com.proct.activities.inreal.data.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
 import com.proct.activities.inreal.R
 
 @Entity(tableName = "dishes")
@@ -19,7 +18,7 @@ data class Dish(
     var price: String,
 
     @ColumnInfo(name = "imageId")
-    var imageId : Int,
+    var imageId: Int,
 
     @ColumnInfo(name = "calories")
     var calories: String,
@@ -35,10 +34,9 @@ data class Dish(
 
     @ColumnInfo(name = "rawForObject")
     var rawForObject: Int
-)
-{
+) {
     object ListOfDishesLoader {
-        val listOfDishes : MutableList<Dish> = mutableListOf(
+        val listOfDishes: MutableList<Dish> = mutableListOf(
             Dish(
                 "Салат",
                 "Листья салата в\nсоке лимона и специях",
@@ -48,7 +46,8 @@ data class Dish(
                 "Листья салата",
                 DishType.SALADS,
                 "100 Г",
-                R.raw.standart_salad),
+                R.raw.standart_salad
+            ),
             Dish(
                 "Картофельный салат",
                 "Летний салат с\nкартофелем, морковкой и ветчиной",
@@ -58,7 +57,8 @@ data class Dish(
                 "Картофель, морковь, ветчина, майонез",
                 DishType.SALADS,
                 "350 Г",
-                R.raw.potato_salad),
+                R.raw.potato_salad
+            ),
             Dish(
                 "Кремовый суп",
                 "Сырный кремовый\nсуп",
@@ -68,7 +68,8 @@ data class Dish(
                 "Крем, сухарики",
                 DishType.SOUPS,
                 "300 Г",
-                R.raw.krem_soup),
+                R.raw.krem_soup
+            ),
             Dish(
                 "Том Ям",
                 "Острый пан-\nазиатский суп",
@@ -78,7 +79,8 @@ data class Dish(
                 "Лапша, яйцо, грибы",
                 DishType.SOUPS,
                 "560 Г",
-                R.raw.tom_yam),
+                R.raw.tom_yam
+            ),
             Dish(
                 "Каппучино",
                 "Cливочный латте\nc сиропом на выбор",
@@ -88,7 +90,8 @@ data class Dish(
                 "Кофеин, сливки, молоко",
                 DishType.DRINKS,
                 "310 Г",
-                R.raw.capuccino),
+                R.raw.capuccino
+            ),
             Dish(
                 "Кофе",
                 "Kофе, \npauling president",
@@ -98,7 +101,8 @@ data class Dish(
                 "Черный кофе",
                 DishType.DRINKS,
                 "300 Г",
-                R.raw.coffee),
+                R.raw.coffee
+            ),
             Dish(
                 "Черный чай",
                 "Чай \nс добавлением цебреца",
@@ -108,7 +112,8 @@ data class Dish(
                 "Лапсанх Сушонг",
                 DishType.DRINKS,
                 "300 Г",
-                R.raw.tea),
+                R.raw.tea
+            ),
             Dish(
                 "Воздушный торт",
                 "Нежное безе и шоколад\nс вишней и черникой",
@@ -118,7 +123,8 @@ data class Dish(
                 "Шоколад, крем, черника, вишня, сливки",
                 DishType.DESSERTS,
                 "1000 Г",
-                R.raw.bisquit_cake),
+                R.raw.bisquit_cake
+            ),
             Dish(
                 "Шоколадный торт",
                 "Вкусный многослойный\nторт",
@@ -128,7 +134,8 @@ data class Dish(
                 "Шоколад, крем, вишня",
                 DishType.DESSERTS,
                 "500 Г",
-                R.raw.piece_of_the_cake),
+                R.raw.piece_of_the_cake
+            ),
             Dish(
                 "Шоколадный пудинг",
                 "Шоколадный пудинг\nсо сладкими вишенками",
@@ -138,7 +145,8 @@ data class Dish(
                 "Шоколад, вишня",
                 DishType.DESSERTS,
                 "600 Г",
-                R.raw.pudding),
+                R.raw.pudding
+            ),
             Dish(
                 "Блины",
                 "Блины на молоке",
@@ -148,7 +156,8 @@ data class Dish(
                 "Мука, сахар, молоко",
                 DishType.DESSERTS,
                 "400 Г",
-                R.raw.pancakes),
+                R.raw.pancakes
+            ),
             Dish(
                 "Чизбургер",
                 "Американский чизбургер\nс тремя видами сыра и говядиной",
@@ -158,7 +167,8 @@ data class Dish(
                 "Котлета, сыры, салат, помидор",
                 DishType.HOT,
                 "700 Г",
-                R.raw.cheeseburger),
+                R.raw.cheeseburger
+            ),
             Dish(
                 "Пицца",
                 "Пицца на красном соусе\nс острым чоризо",
@@ -168,7 +178,8 @@ data class Dish(
                 "Колбаса, сыр, кетчуп",
                 DishType.HOT,
                 "1000 Г",
-                R.raw.pizza),
+                R.raw.pizza
+            ),
             Dish(
                 "Курица с картошкой",
                 "Целая курица\nс картофельными дольками",
@@ -178,7 +189,8 @@ data class Dish(
                 "Курица, картошка",
                 DishType.HOT,
                 "1500 Г",
-                R.raw.chicken_mit_potato),
+                R.raw.chicken_mit_potato
+            ),
             Dish(
                 "Крылышки",
                 "Куриные крылышки\nс укропом и соком лимона",
@@ -188,7 +200,8 @@ data class Dish(
                 "Курица, укроп",
                 DishType.HOT,
                 "500 Г",
-                R.raw.chicken_wings),
+                R.raw.chicken_wings
+            ),
             Dish(
                 "Мясо с картошкой",
                 "Мясо с картохой\nпо домашнему",
@@ -198,9 +211,8 @@ data class Dish(
                 "Курица, картошка",
                 DishType.HOT,
                 "500 Г",
-                R.raw.meat_whith_potato)
+                R.raw.meat_whith_potato
+            )
         )
     }
 }
-
-

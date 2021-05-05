@@ -15,7 +15,7 @@ import com.proct.activities.inreal.views.main.dishes.FragmentDishes
 class DishCardAdapter(
     var dishes: List<Dish>
 ) : RecyclerView.Adapter<DishCardAdapter.DishViewHolder>() {
-    private var listener : FragmentDishes.DishesListener? = null
+    private var listener: FragmentDishes.DishesListener? = null
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -26,7 +26,7 @@ class DishCardAdapter(
         return DishViewHolder(cv)
     }
 
-    fun initListener(listener : FragmentDishes.DishesListener) {
+    fun initListener(listener: FragmentDishes.DishesListener) {
         this.listener = listener
     }
 
@@ -47,7 +47,7 @@ class DishCardAdapter(
 
         val button = cardView.findViewById<View>(R.id.card_for_dish_button_for_choice)
 
-        button.setOnClickListener{
+        button.setOnClickListener {
             listener!!.onClickDish(
                 dishes[position].name
             )
