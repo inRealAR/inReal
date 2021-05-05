@@ -53,7 +53,8 @@ class FragmentDetailedDish : Fragment() {
                 viewModel.setDishToOrder(dish)
             }
 
-            override fun onClickSeeInAR() {
+            override fun onClickSeeInAR(name: kotlin.String) {
+                viewModel.setNameToAR(name)
                 mainNavController.navigate(R.id.ARFragment)
             }
         }
@@ -76,7 +77,7 @@ class FragmentDetailedDish : Fragment() {
             requireView().findViewById(R.id.detailed_card_for_dish_price_text_view)
 
         seeInAR = requireView().findViewById(R.id.detailed_card_for_dish_button_see_in_ar)
-        seeInAR.setOnClickListener { listener.onClickSeeInAR() }
+        seeInAR.setOnClickListener { listener.onClickSeeInAR(dish.name) }
 
         addToOrder =
             requireView().findViewById(R.id.detailed_card_for_dish_button_for_choice)
@@ -108,5 +109,5 @@ class FragmentDetailedDish : Fragment() {
 
 interface DetailedDishListener {
     fun onClickAddToOrder(dish: Dish)
-    fun onClickSeeInAR()
+    fun onClickSeeInAR(name: kotlin.String)
 }

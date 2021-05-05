@@ -12,13 +12,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class DetailedDishAndOrderProvider @Inject constructor(
+class DetailedDishAndOrderViewModelProvider @Inject constructor(
     var orderViewModelAdapter: OrderViewModelAdapter
 ) {
-//    private val _dish = MutableLiveData<Dish>()
-//    val dish: LiveData<Dish>
-//        get() = _dish
-
     suspend fun setDishToOrder(dish: Dish) {
         orderViewModelAdapter.increment(OrderItem(dish, 1, dish.price.toInt()))
     }
