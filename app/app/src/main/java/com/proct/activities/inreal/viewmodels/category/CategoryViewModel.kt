@@ -29,7 +29,6 @@ class CategoryViewModel @Inject constructor(
     init {
         viewModelScope.launch(Dispatchers.IO) {
             val list = adapter.getCategoriesList().first().toMutableList()
-            Log.e("OrderViewModel", "LIST RETURN $list")
             withContext(Dispatchers.Main) {
                 _categoriesList.postValue(list)
             }

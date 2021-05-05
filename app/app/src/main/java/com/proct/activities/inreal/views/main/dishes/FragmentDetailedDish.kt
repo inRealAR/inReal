@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
@@ -31,10 +32,9 @@ class FragmentDetailedDish : Fragment() {
     private lateinit var viewModel: DetailedDishViewModel
     private lateinit var mainNavController: NavController
 
-    private lateinit var dish: Dish
-
     private lateinit var nameOfDish: TextView
     private lateinit var kbguOfDish: TextView
+    private lateinit var cardkbguOfDish: CardView
     private lateinit var pictureOfDish: ImageView
     private lateinit var ingredientsOfDish: TextView
     private lateinit var priceOfDish: TextView
@@ -56,7 +56,6 @@ class FragmentDetailedDish : Fragment() {
             }
 
             override fun onClickSeeInAR(dish: Dish) {
-//                viewModel.setNameToAR(dish.name)
                 val intent = Intent(activity, ARActivity::class.java)
                 val rawForObject: Int = dish.rawForObject
                 intent.putExtra("rawForObject", rawForObject)
@@ -69,26 +68,54 @@ class FragmentDetailedDish : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        initObservers()
-        nameOfDish =
-            requireView().findViewById(R.id.detailed_card_for_dish_name_text_view)
-        kbguOfDish =
-            requireView().findViewById(R.id.detailed_card_for_dish_kbgu_text_view)
-        pictureOfDish =
-            requireView().findViewById(R.id.detailed_card_for_dish_picture)
-        ingredientsOfDish =
-            requireView().findViewById(R.id.detailed_card_for_dish_ingridients_text_view)
-        priceOfDish =
-            requireView().findViewById(R.id.detailed_card_for_dish_price_text_view)
 
+        initObservers()
+        cardkbguOfDish = requireView().findViewById(R.id.detailed_card_for_dish_card_view_with_kbgu)
+
+        kbguOfDish = requireView().findViewById(R.id.detailed_card_for_dish_kbgu_text_view)
+        nameOfDish = requireView().findViewById(R.id.detailed_card_for_dish_name_text_view)
+        pictureOfDish = requireView().findViewById(R.id.detailed_card_for_dish_picture)
+        ingredientsOfDish = requireView().findViewById(R.id.detailed_card_for_dish_ingredients_text_view)
+        priceOfDish = requireView().findViewById(R.id.detailed_card_for_dish_price_text_view)
         seeInAR = requireView().findViewById(R.id.detailed_card_for_dish_button_see_in_ar)
-        seeInAR.setOnClickListener { listener.onClickSeeInAR(dish) }
+        seeInAR.setOnClickListener { listener.onClickSeeInAR(viewModel.dish.value!!) }
 
         addToOrder =
             requireView().findViewById(R.id.detailed_card_for_dish_button_for_choice)
         addToOrder.setOnClickListener {
-            listener.onClickAddToOrder(dish)
+            listener.onClickAddToOrder(viewModel.dish.value!!)
         }
+        setVisibilityToInvisible()
+    }
+
+    private fun setVisibilityToVisible() {
+        nameOfDish.visibility = View.VISIBLE
+        kbguOfDish.visibility = View.VISIBLE
+        cardkbguOfDish.visibility= View.VISIBLE
+        pictureOfDish.visibility = View.VISIBLE
+        ingredientsOfDish.visibility = View.VISIBLE
+        priceOfDish.visibility = View.VISIBLE
+
+        seeInAR.visibility = View.VISIBLE
+        seeInAR.visibility = View.VISIBLE
+
+        addToOrder.visibility = View.VISIBLE
+        addToOrder.visibility = View.VISIBLE
+    }
+
+    private fun setVisibilityToInvisible() {
+        nameOfDish.visibility = View.INVISIBLE
+        kbguOfDish.visibility = View.INVISIBLE
+        cardkbguOfDish.visibility= View.INVISIBLE
+        pictureOfDish.visibility = View.INVISIBLE
+        ingredientsOfDish.visibility = View.INVISIBLE
+        priceOfDish.visibility = View.INVISIBLE
+
+        seeInAR.visibility = View.INVISIBLE
+        seeInAR.visibility = View.INVISIBLE
+
+        addToOrder.visibility = View.INVISIBLE
+        addToOrder.visibility = View.INVISIBLE
     }
 
     private fun initObservers() {
@@ -98,8 +125,7 @@ class FragmentDetailedDish : Fragment() {
     }
 
     private fun update(dish: Dish) {
-        this.dish = dish
-
+        setVisibilityToVisible()
         nameOfDish.text = dish.name
         kbguOfDish.text = dish.calories
         pictureOfDish.setImageResource(dish.imageId)

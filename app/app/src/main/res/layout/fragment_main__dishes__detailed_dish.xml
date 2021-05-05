@@ -17,9 +17,10 @@
                 android:id="@+id/detailed_card_for_dish_card_view_with_kbgu"
                 android:layout_width="@dimen/detailedCardForDish_CardViewWithKBGU_width"
                 android:layout_height="@dimen/detailedCardForDish_CardViewWithKBGU_height"
-                android:alpha="0.8"
-                app:cardCornerRadius="@dimen/detailedCardForDish_CardViewWithKBGU_cardCornerRadius"
                 android:layout_marginStart="@dimen/kbzhu_card_margin_start_in_detailedCardForDish"
+                android:alpha="0.8"
+                android:visibility="invisible"
+                app:cardCornerRadius="@dimen/detailedCardForDish_CardViewWithKBGU_cardCornerRadius"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/detailed_card_for_dish_picture">
 
@@ -44,7 +45,8 @@
                         android:paddingTop="@dimen/padding_top_for_nameTextView_in_detailedCardForDish"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size_for_nameTextView_in_detailedCardForDish"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:visibility="invisible" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -65,7 +67,8 @@
                         android:paddingLeft="@dimen/paddings_left_and_right_for_KBGUTexts_in_detailedCardForDish"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size_for_KBGUTexts_in_detailedCardForDish"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:visibility="invisible" />
 
                 </LinearLayout>
 
@@ -76,6 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/detailedCardForDish_picture_height"
                 android:scaleType="centerCrop"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -97,10 +101,11 @@
                 android:text="@string/consist"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_for_ingredientsTexts_in_detailedCardForDish"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                 />
 
             <TextView
-                android:id="@+id/detailed_card_for_dish_ingridients_text_view"
+                android:id="@+id/detailed_card_for_dish_ingredients_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -108,7 +113,8 @@
                 android:paddingLeft="@dimen/paddings_for_textsAfterPic_in_detailedCardForDish"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_for_ingredientsTexts_in_detailedCardForDish"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="invisible" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -120,22 +126,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
+                    android:layout_marginEnd="@dimen/cost_margin_end_in_detailedCardForDish"
                     android:textColor="@color/beige"
                     android:textSize="@dimen/text_size_for_priceTextView_in_detailedCardForDish"
                     android:textStyle="bold"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginEnd="@dimen/cost_margin_end_in_detailedCardForDish"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="@dimen/height_and_width_for_picOfRuble"
                     android:layout_height="@dimen/height_and_width_for_picOfRuble"
+                    android:layout_marginEnd="@dimen/ruble_icon_margin_end_in_detailedCardForDish"
                     android:src="@drawable/ruble"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginEnd="@dimen/ruble_icon_margin_end_in_detailedCardForDish"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -148,27 +155,29 @@
                     android:id="@+id/detailed_card_for_dish_button_see_in_ar"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/detailedCardForDish_buttons_height"
+                    android:layout_marginStart="@dimen/buttons_margin_in_detailedCardForDish"
                     android:text="@string/see_in_ar"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_size_for_buttonsTextView_in_detailedCardForDish"
                     android:textStyle="bold"
+                    android:visibility="invisible"
                     app:backgroundTint="@color/terracotta"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginStart="@dimen/buttons_margin_in_detailedCardForDish" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
                     android:id="@+id/detailed_card_for_dish_button_for_choice"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/detailedCardForDish_buttons_height"
+                    android:layout_marginEnd="@dimen/buttons_margin_in_detailedCardForDish"
                     android:text="@string/button_text_for_choice"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_size_for_buttonsTextView_in_detailedCardForDish"
                     android:textStyle="bold"
+                    android:visibility="invisible"
                     app:backgroundTint="@color/terracotta"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginEnd="@dimen/buttons_margin_in_detailedCardForDish" />
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </LinearLayout>
