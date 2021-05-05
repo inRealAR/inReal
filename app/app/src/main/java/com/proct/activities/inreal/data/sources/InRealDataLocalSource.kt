@@ -26,6 +26,10 @@ class InRealDataLocalSource @Inject constructor(
 
     override suspend fun insertOrderItem(orderItem: OrderItem) = orderItemDAO.insert(orderItem)
 
+    override suspend fun insertCategory(category: Category) = categoryDAO.insert(category)
+
+    override suspend fun insertDish(dish: Dish) = dishDAO.insert(dish)
+
     override suspend fun getDish(name: String): Dish = dishDAO.getDish(name)
 
     override suspend fun deleteOrderItem(orderItem: OrderItem) = orderItemDAO.delete(orderItem)
