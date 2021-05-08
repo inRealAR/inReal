@@ -7,7 +7,7 @@
 
 ### Architecture
 * This app are using MVVM architecture
-* Also we DI Architecture Pattern with Hilt
+* Also we implement DI Architecture Pattern with Hilt
 
 ### Stack
 * _Hilt_ for implement Dependency Injection Pattern
