@@ -38,7 +38,7 @@ class DatabaseModule {
         result = Room.databaseBuilder(
             appContext,
             InRealDatabase::class.java,
-            "InrRealApp.db"
+            "InRealApp.db"
         ).build()
 
         return result
